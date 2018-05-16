@@ -25,5 +25,5 @@ ik_max_word 和 ik_smart 什么区别?
 ik_smart: 会做最粗粒度的拆分，比如会将“中华人民共和国国歌”拆分为“中华人民共和国,国歌”。
 
 
-详细请参考：
+详细使用参考：
 [GitHub开源ik分词地址：elasticsearch-analysis-ik中文分词](https://github.com/medcl/elasticsearch-analysis-ik)
