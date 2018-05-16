@@ -4,12 +4,15 @@
 
   
 ES的API组成结构：使用RESTful API风格来命名API
+```
 API基本格式：http://<ip>:<port>/<索引>/<类型>/<文档id> 常用HTTP动词
+```
 >常用HTTP动词：GET/PUT/POST/DELETE 
 >>PUT 执行创建或修改，如确定document的ID时
->>POST一般用于创建和查询，如不确定document的ID，可以直接POST， ES可以自己生成不会发生碰撞的UUID
+>>POST一般用于改变对象或查询，如不确定document的ID，可以直接POST， ES可以  自己生成不会发生碰撞的UUID
 >>GET一般用于查询
 >>DELETE用于删除
+>>HEAD请求获取对象的基础信息，如检查文档是否存在
 
 
 
