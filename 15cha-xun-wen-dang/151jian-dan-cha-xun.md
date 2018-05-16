@@ -7,6 +7,10 @@ GET /order_index/order_type/_search
 
 2.根据_id查询，pretty表示以易读的格式返回
 ```
+GET /order_index/order_type/1
+```
+
+```
 GET /order_index/order_type/1?pretty
 ```
 
@@ -27,6 +31,14 @@ GET /order_index/order_type/_search?q=orderId:10001
 ```
 
 
-效果图
+效果图：
+图1
 ![](/assets/13.png)
-
+图2
+![](/assets/14.png)
+图3
+![](/assets/15.png)
+图4
+![](/assets/16.png)
+图5
+![](/assets/17.png)
