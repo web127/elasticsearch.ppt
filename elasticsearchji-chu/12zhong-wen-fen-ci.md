@@ -16,7 +16,7 @@ Elastic 的分词器称为 analyzer。我们对每个字段指定分词器。
 ```
 "user": {
   "type": "text",
-  "analyzer": "ik_max_word",  #字段的文本进行分词的分词器
+  "analyzer": "ik_max_word",       #字段的文本进行分词的分词器
   "search_analyzer": "ik_max_word" #搜索词进行分词的分词器
 }
 ```
