@@ -26,4 +26,4 @@ ik_smart: 会做最粗粒度的拆分，比如会将“中华人民共和国国�
 
 
 详细使用参考：
-[GitHub开源ik分词地址：elasticsearch-analysis-ik中文分词](https://github.com/medcl/elasticsearch-analysis-ik)
+[GitHub开源ik分词：elasticsearch-analysis-ik中文分词](https://github.com/medcl/elasticsearch-analysis-ik)
