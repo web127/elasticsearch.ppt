@@ -17,7 +17,7 @@
 
 ###### 手动自定义分片：
 
-![](/assets/FY$~@0[]4U4HPS%QIDK%XUY.png)
+![](/assets/1.png)
 
 * Tip  primary shard默认为5个，并且一旦建好不能修改，replica shard默认1个，随时修改数量
 
