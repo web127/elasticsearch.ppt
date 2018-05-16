@@ -2,7 +2,6 @@
 
 * [ElasticSearch基础](elasticsearchji-chu.md)
   * [前言](elasticsearchji-chu/11ji-chu.md)
-  * [目录](elasticsearchji-chu/mu-lu.md)
   * [1.1基础概念](elasticsearchji-chu/11ji-chu-gai-nian.md)
 * [ElasticSearch基础查询](README.md)
   * [2.1创建索引](11chuang-jian-suo-yin.md)
