@@ -20,6 +20,22 @@ _index文档在哪存放
 _type文档表示的对象类别
 _id文档唯一标识，id可以自己指定，也可以自动生成
 
+
+#####假设构建了的表如下：
+是否主键|字段名|字段描述|数据类型|分词
+-|-|-|
+是|orderId|订单ID|long|否
+否|userId|用户ID|long|否
+否|orderNo|订单号|string|否
+否|userName|用户名|string|否
+否|totalPrice|价格|float|否
+否|address|收货地址|string|是
+否|createTime|创建时间|data|否
+
+
+
+
+
 1.建立order_index索引  
 2.在order_index下建立order_type类型  
 3.每个订单数据是一个文档
@@ -41,10 +57,13 @@ POST /order_index/order_type/
 以上创建索引和类型可以通过一条命令完成
 PUT /order_index/order_type/1
 {
-    "userId": "1",
-    "first_name" : "John",
-    "last_name" :  "Smith",
-    "age" :        25,
-    "about" :      "I love to go rock climbing",
-    "interests": [ "sports", "music" ]
+    "ORDER_ID": "1",
+    "CONSIGNOR_USER_NAME" : "John",
+    "CONSIGNOR_MOBILE" :  "Smith",
+    "CONSIGNOR_COMPANY" :        25,
+    "MONEY":"",
+    "DESPATCH_PLACE":"",
+    "DELIVER_NAME":"",
+    "CREATED_TIME" :      "I love to go rock climbing",
+    "LAST_UPT_TIME": [ "sports", "music" ]
 }
