@@ -1,3 +1,5 @@
+# 1.2中文分词
+
 Elasticsearch中，内置了很多分词器（analyzers），例如standard （标准分词器）、english （英文分词）和chinese （中文分词，但是分词效果不好）
 
 
