@@ -32,9 +32,11 @@ _id文档唯一标识，id可以自己指定，也可以自动生成
 否|address|收货地址|string|是
 否|createTime|创建时间|data|否
 
-
-
-
+如果不创建mapping，ES会根据文档的字段数据自动识别类型
+这里需要创建自己定义的mapping
+#####创建自定义mapping
+![](/assets/7.png)
+![](/assets/8.png)
 
 1.建立order_index索引  
 2.在order_index下建立order_type类型  
@@ -55,15 +57,20 @@ POST /order_index/order_type/
 
 
 以上创建索引和类型可以通过一条命令完成
+```
 PUT /order_index/order_type/1
 {
-    "ORDER_ID": "1",
-    "CONSIGNOR_USER_NAME" : "John",
-    "CONSIGNOR_MOBILE" :  "Smith",
-    "CONSIGNOR_COMPANY" :        25,
-    "MONEY":"",
-    "DESPATCH_PLACE":"",
-    "DELIVER_NAME":"",
-    "CREATED_TIME" :      "I love to go rock climbing",
-    "LAST_UPT_TIME": [ "sports", "music" ]
+  "orderId":10001,
+  "userId":10001,
+  "orderNo":"a10001",
+  "userName":"John",
+  "totalPrice":50.00,
+  "address":"江苏省南京市江宁区XXX",
+  "createTime":"2018-05-16 14:08:00"
 }
+```
+![](/assets/5.png)
+
+
+
+
