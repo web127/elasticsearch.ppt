@@ -4,7 +4,14 @@
 ```
 GET /order_index/order_type/_search
 ```
-
+```
+GET /order_index/order_type/_search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+```
 2.根据_id查询，pretty表示以易读的格式返回
 ```
 GET /order_index/order_type/1
