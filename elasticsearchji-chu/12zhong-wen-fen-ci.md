@@ -14,11 +14,16 @@ Elastic 的分词器称为 analyzer。我们对每个字段指定分词器。
 ```
 "user": {
   "type": "text",
-  "analyzer": "ik_max_word",
-  "search_analyzer": "ik_max_word"
+  "analyzer": "ik_max_word",  #字段的文本进行分词的分词器
+  "search_analyzer": "ik_max_word" #搜索词进行分词的分词器
 }
 ```
 
-参考
 
+ik_max_word 和 ik_smart 什么区别?
+>ik_max_word: 会将文本做最细粒度的拆分，比如会将“中华人民共和国国歌”拆分为“中华人民共和国,中华人民,中华,华人,人民共和国,人民,人,民,共和国,共和,和,国国,国歌”，会穷尽各种可能的组合；
+ik_smart: 会做最粗粒度的拆分，比如会将“中华人民共和国国歌”拆分为“中华人民共和国,国歌”。
+
+
+详细请参考：
 [GitHub开源ik分词地址：elasticsearch-analysis-ik中文分词](https://github.com/medcl/elasticsearch-analysis-ik)
