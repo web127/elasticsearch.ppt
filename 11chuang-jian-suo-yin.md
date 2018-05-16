@@ -19,8 +19,8 @@ _index文档在哪存放
 _type文档表示的对象类别
 _id文档唯一标识，id可以自己指定，也可以自动生成
 
-1.建立order\_index索引  
-2.在order\_index下建立order\_type类型  
+1.建立order_index索引  
+2.在order_index下建立order_type类型  
 3.每个订单数据是一个文档
 
 最简单的创建索引方式
@@ -31,5 +31,7 @@ PUT /order_index/
 
 最简单的创建类型方式
 
-
+```
+POST /order_index/order_type/
+```
 
