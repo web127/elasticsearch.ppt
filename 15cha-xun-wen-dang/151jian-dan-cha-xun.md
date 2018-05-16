@@ -14,7 +14,11 @@ GET /order_index/order_type/1
 
 ```
 GET /order_index/order_type/1/_source
-```
 
-4.
+```
+4.返回部分字段
+
+```
+GET /order_index/order_type/1/_source?orderId,orderNo
+```
 
