@@ -19,4 +19,5 @@
 * [SpringBoot集成ES的操作](springbootji-cheng-es-de-cao-zuo.md)
   * [4.1java操作ES](springbootji-cheng-es-de-cao-zuo/11javacao-zuo-es.md)
   * [4.2Spring-data-elasticsearch操作ES](springbootji-cheng-es-de-cao-zuo/42.md)
+* ElasticSearch优化
 
