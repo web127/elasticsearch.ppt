@@ -68,7 +68,7 @@ POST /order_index/order_type/_search
 }
 ```
 #### match_phrase查询
->短语查询，采用match_phrase匹配，结果会非常严格
+>短语查询，查询首先解析查询字符串来产生一个词条列表。然后会搜索所有的词条，采用match_phrase匹配，相比match结果会非常严格
 ```
 POST /order_index/order_type/_search
 {
@@ -101,7 +101,7 @@ POST /order_index/order_type/_search
 }
 ```
 
-#### term 过滤
+#### term 查询
 >term主要用于精确匹配哪些值，比如数字，日期，布尔值或 not_analyzed 的字符串(未经分词的文本数据类型)
 
 ```
@@ -116,7 +116,7 @@ POST /order_index/order_type/_search
 ```
 
 
-#### terms 过滤
+#### terms 查询
 >terms 跟 term 有点类似，但 terms 允许指定多个匹配条件。 如果某个字段指定了多个值，那么文档需要一起去做匹配
 
 ```
@@ -131,11 +131,19 @@ POST /order_index/order_type/_search
 ```
 #### bool 查询
 
->bool 过滤可以直接给出是否匹配成功，而bool 查询要计算每一个查询子句的 _score （相关性分值）。
->bool 过滤可以用来合并多个过滤条件查询结果的布尔逻辑，它包含一下操作符：
-must :: 多个查询条件的完全匹配,相当于 and。 
-must_not :: 多个查询条件的相反匹配，相当于 not。 
-should :: 至少有一个查询条件匹配, 相当于 or。 
+>Bool查询对应Lucene中的BooleanQuery，它由一个或者多个子句组成，每个子句都有特定的类型。
+
+>must
+返回的文档必须满足must子句的条件，并且参与计算分值
+
+>filter
+返回的文档必须满足filter子句的条件。但是不会像Must一样，参与计算分值
+
+>should
+返回的文档可能满足should子句的条件。在一个Bool查询中，如果没有must或者filter，有一个或者多个should子句，那么只要满足一个就可以返回。minimum_should_match参数定义了至少满足几个子句。
+
+>must_not
+返回的文档必须不满足must_not定义的条件。
 
 ```
 POST /order_index/order_type/_search
@@ -170,4 +178,4 @@ POST /order_index/order_type/_search
   }
 }
 ```
-
+### prefix 查询
