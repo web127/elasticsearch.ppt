@@ -4,8 +4,8 @@
 match_all 
 match 
 multi_match 
-term
-bool 和must、must_not、should
+term和terms
+bool和must、must_not、should
 wildcards 
 regexp 
 prefix 
@@ -73,6 +73,19 @@ POST /order_index/order_type/_search
   "query": {
     "term": {
       "totalPrice": 100
+    }
+  }
+}
+```
+
+#### terms 过滤
+>terms 跟 term 有点类似，但 terms 允许指定多个匹配条件。 如果某个字段指定了多个值，那么文档需要一起去做匹配
+
+```
+{
+  "query": {
+    "terms": {
+      "totalPrice": [100,80]
     }
   }
 }
