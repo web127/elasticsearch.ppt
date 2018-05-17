@@ -22,7 +22,7 @@
 
 * primary shard默认为5个，并且一旦建好不能修改，replica shard默认1个，随时修改数量
 
-* 一般使用默认的分片就可以了，就是5个primary shard，每个primary shard拥有一个replica shard。
+* 一般使用默认的分片就可以了，就是5个primary shard，每个primary shard拥有一个replica shard。也就是说每个索引有10个分片
 
 ###### Mapping的创建:
 
