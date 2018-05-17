@@ -1,9 +1,10 @@
-## 条件查询
+## 基础查询
 
 了解以下查询关键词：
 match_all 
 match 
 multi_match 
+match_phrase
 range
 term和terms
 bool和must、must_not、should
@@ -35,7 +36,7 @@ POST /order_index/order_type/_search
 {
   "query": {
     "match": {
-      "address": "鼓楼"
+      "address": "鼓楼区"
     }
   }
 }
@@ -66,6 +67,20 @@ POST /order_index/order_type/_search
   }
 }
 ```
+#### match_phrase查询
+>短语查询，采用match_phrase匹配，结果会非常严格
+```
+POST /order_index/order_type/_search
+{
+  "query": {
+    "match_phrase": {
+      "address": "鼓楼区"
+    }
+  }
+}
+```
+
+
 #### range 查询
 >range 过滤器， 让你可以根据范围过滤
 gt :: 大于

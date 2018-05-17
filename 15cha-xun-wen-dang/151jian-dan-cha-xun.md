@@ -49,6 +49,34 @@ POST /order_index/order_type/_search
 }
 ```
 
+6.返回从10到19的文档,注意:如果没有使用size字段, 默认为10
+```
+POST /order_index/order_type/_search
+{
+  "query": { "match_all": {} },
+  "from": 10,
+  "size": 10
+}
+```
+
+7.字段orderId降序排列
+```
+POST /order_index/order_type/_search
+{
+  "query": {
+    "match_all": {}
+  },
+  "sort": {
+    "orderId": {
+      "order": "desc"
+    },
+    "userId": {
+      "order": "desc"
+    }
+  }
+}
+```
+
 效果图：
 图1
 ![](/assets/13.png)
