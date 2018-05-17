@@ -37,6 +37,7 @@ GET /order_index/order_type/1/_source?orderId,orderNo
 ```
 GET /order_index/order_type/_search?q=orderId:10001
 ```
+传JSON体参数，POST请求
 ```
 POST /order_index/order_type/_search
 {
