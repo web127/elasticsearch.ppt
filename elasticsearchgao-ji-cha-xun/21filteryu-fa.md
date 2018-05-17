@@ -31,11 +31,15 @@ POST /order_index/order_type/_search
 ```
 POST /order_index/order_type/_search
 {
-"query": {
-"term": {
-"totalPrice": 100
-}
-}
+  "query": {
+    "bool": {
+      "filter": {
+        "term": {
+          "totalPrice": 100
+        }
+      }
+    }
+  }
 }
 ```
 
@@ -46,10 +50,17 @@ POST /order_index/order_type/_search
 ```
 POST /order_index/order_type/_search
 {
-"query": {
-"terms": {
-"totalPrice": [100,80]
-}
-}
+  "query": {
+    "bool": {
+      "filter": {
+        "terms": {
+          "totalPrice": [
+            100,
+            80
+          ]
+        }
+      }
+    }
+  }
 }
 ```
