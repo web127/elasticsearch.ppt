@@ -10,13 +10,18 @@ lte:: 小于等于
 ```
 POST /order_index/order_type/_search
 {
-"query": {
-"range": {
-"createTime": {
-"gte": "2018-05-16 14:31:00"
-}
-}
-}
+  "query": {
+    "bool": {
+      "filter": {
+        "range": {
+          "totalPrice": {
+            "gt": 20,
+            "lt": 80
+          }
+        }
+      }
+    }
+  }
 }
 ```
 
