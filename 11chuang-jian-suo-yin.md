@@ -38,6 +38,38 @@ _id文档唯一标识，id可以自己指定，也可以自动生成
 如果不创建mapping，ES会根据文档的字段数据自动识别类型
 这里需要创建自己定义的mapping
 #####创建自定义mapping
+PUT或者POST
+```
+PUT /order_index/_mapping/order_type/
+{
+  "order_type": {
+    "properties": {
+      "orderId": {
+        "type": "long"
+      },
+      "userId": {
+        "type": "long"
+      },
+      "userName": {
+        "type": "text"
+      },
+      "totalPrice": {
+        "type": "float"
+      },
+      "address": {
+        "type": "text",
+        "analyzer": "ik_smart",
+        "search_analyzer": "ik_smart"
+      },
+      "createTime": {
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      }
+    }
+  }
+}
+```
+
 ![](/assets/7.png)
 ![](/assets/8.png)
 
