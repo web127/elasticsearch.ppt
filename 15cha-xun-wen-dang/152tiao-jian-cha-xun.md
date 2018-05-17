@@ -4,6 +4,7 @@
 match_all 
 match 
 multi_match 
+term
 bool 和must、must_not、should
 wildcards 
 regexp 
@@ -63,6 +64,20 @@ POST /order_index/order_type/_search
   }
 }
 ```
+#### term 过滤
+>term主要用于精确匹配哪些值，比如数字，日期，布尔值或 not_analyzed 的字符串(未经分词的文本数据类型)
+
+```
+POST /order_index/order_type/_search
+{
+  "query": {
+    "term": {
+      "totalPrice": 100
+    }
+  }
+}
+```
+
 #### bool 查询和bool 过滤
 
 >bool 过滤可以直接给出是否匹配成功，而bool 查询要计算每一个查询子句的 _score （相关性分值）。
