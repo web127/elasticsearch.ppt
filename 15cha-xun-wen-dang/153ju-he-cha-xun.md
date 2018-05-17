@@ -106,3 +106,26 @@ POST /order_index/order_type/_search
 
 #### 多条件聚合
 
+比如按totalPrice升序，按orderId分组
+```
+POST /order_index/order_type/_search
+{
+  "size": 0,
+  "aggs": {
+    "totalPrice": {
+      "terms": {
+        "field": "totalPrice",
+        "order": {
+          "_count": "asc"
+        }
+      }
+    },
+    "group_by_totalPrice": {
+      "terms": {
+        "field": "orderId"
+      }
+    }
+  }
+}
+```
+
