@@ -178,4 +178,48 @@ POST /order_index/order_type/_search
   }
 }
 ```
+#### wildcards
+>使用标准的shell通配符查询
+
+```
+POST /order_index/order_type/_search
+{
+  "query": {
+    "wildcard": {
+      "address": "南?市*"
+    }
+  }
+}
+```
+
+![](/assets/19.png)
+
+#### regexp 查询
+>正则表达式查询
+
+```
+POST /order_index/order_type/_search
+{
+  "query": {
+    "regexp": {
+      "orderNo": "a[0-9]+"
+    }
+  }
+}
+```
+![](/assets/20.png)
+
 ### prefix 查询
+>以什么字符开头的，可以更简单地用 prefix
+
+```
+POST /order_index/order_type/_search
+{
+  "query": {
+    "prefix": {
+      "address": "江"
+    }
+  }
+}
+```
+![](/assets/21.png)
