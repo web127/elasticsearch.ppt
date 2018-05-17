@@ -23,4 +23,5 @@
   * [4.1java操作ES](springbootji-cheng-es-de-cao-zuo/11javacao-zuo-es.md)
   * [4.2Spring-data-elasticsearch操作ES](springbootji-cheng-es-de-cao-zuo/42.md)
 * [ElasticSearch的优化](elasticsearchyou-hua.md)
+  * 1.1ElasticSearch安全
 
