@@ -5,7 +5,7 @@
 GET /order_index/order_type/_search
 ```
 ```
-GET /order_index/order_type/_search
+POST /order_index/order_type/_search
 {
   "query": {
     "match_all": {}
