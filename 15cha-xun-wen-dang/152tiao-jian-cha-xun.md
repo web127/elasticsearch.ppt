@@ -25,7 +25,8 @@ POST /order_index/order_type/_search
 
 #### match 查询
 >match查询是一个标准查询，不管你需要全文本查询还是精确查询基本上都要用到它。
-但只能针对一个字段。
+>但只能针对一个字段。
+
 ```
 POST /order_index/order_type/_search
 {
@@ -38,6 +39,7 @@ POST /order_index/order_type/_search
 ```
 >如果用match下指定了一个确切值，在遇到数字，日期，布尔值或者not_analyzed 的字符串时，它将为你搜索你给定的值：
 如：
+
 ```
 { "match": { "totalPrice": 26 }} 
 { "match": { "createTime": "2014-09-01" }} 
@@ -46,6 +48,7 @@ POST /order_index/order_type/_search
 ```
 #### multi_match 查询
 >multi_match查询允许你做match查询的基础上同时多个字段搜索同一个，相当于or查询
+
 ```
 POST /order_index/order_type/_search
 {
