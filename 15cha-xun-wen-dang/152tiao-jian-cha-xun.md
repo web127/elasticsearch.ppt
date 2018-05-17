@@ -123,3 +123,38 @@ POST /order_index/order_type/_search
 must :: 多个查询条件的完全匹配,相当于 and。 
 must_not :: 多个查询条件的相反匹配，相当于 not。 
 should :: 至少有一个查询条件匹配, 相当于 or。 
+
+```
+POST /order_index/order_type/_search
+{
+  "query": {
+    "bool": {
+      "must": {
+        "match": {
+          "address": "南京市"
+        }
+      },
+      "must_not": {
+        "match": {
+          "totalPrice": "50"
+        }
+      },
+      "should": [
+        {
+          "match": {
+            "totalPrice": "80"
+          }
+        },
+        {
+          "range": {
+            "createTime": {
+              "gte": "2018-05-15 14:31:00"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
