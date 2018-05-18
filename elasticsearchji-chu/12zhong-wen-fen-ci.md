@@ -40,4 +40,4 @@ POST _analyze?pretty
 
 
 详细参考：
-[GitHub开源ik分词：elasticsearch-analysis-ik中文分词](https://github.com/medcl/elasticsearch-analysis-ik)
+[GitHub开源elasticsearch-analysis-ik分词](https://github.com/medcl/elasticsearch-analysis-ik)
