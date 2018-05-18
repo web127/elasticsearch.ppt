@@ -2,11 +2,11 @@
 
 本书完成章节
 
-* [ ] ElasticSearch基础
-* [x] ElasticSearch基础查询
-* [x] ElasticSearch高级查询
-* [x] SpringBoot整合ElasticSearch
-* [ ] ElasticSearch优化
+- [ ] ElasticSearch基础
+- [x] ElasticSearch基础查询
+- [x] ElasticSearch高级查询
+- [x] SpringBoot整合ElasticSearch
+- [ ] ElasticSearch优化
 
 
 
