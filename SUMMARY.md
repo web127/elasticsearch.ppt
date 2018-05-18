@@ -16,7 +16,6 @@
 * [ElasticSearch高级查询](elasticsearchgao-ji-cha-xun.md)
   * [3.1filter语法](elasticsearchgao-ji-cha-xun/21filteryu-fa.md)
   * [3.2关联查询](elasticsearchgao-ji-cha-xun/33lian-he-cha-xun.md)
-  * [3.3父子文档查询](elasticsearchgao-ji-cha-xun/23guan-lian-cha-xun.md)
 * [SpringBoot集成ES的操作](springbootji-cheng-es-de-cao-zuo.md)
   * [4.1java操作ES](springbootji-cheng-es-de-cao-zuo/11javacao-zuo-es.md)
   * [4.2Spring-data-elasticsearch操作ES](springbootji-cheng-es-de-cao-zuo/42.md)
