@@ -32,11 +32,11 @@ node.name: docker_node1
 #
 # Path to directory where to store the data (separate multiple locations by comma):
 #
-#path.data: /path/to/data
+path.data: /usr/local/es_data
 #
 # Path to log files:
 #
-#path.logs: /path/to/logs
+path.logs: /usr/local/es_logs
 #
 # ----------------------------------- Memory -----------------------------------
 #
@@ -69,6 +69,7 @@ http.port: 9200
 #
 network.publish_host: 172.16.16.179
 discovery.zen.ping.unicast.hosts: ["172.16.16.179:9300","172.16.16.179:9301","172.16.16.178:9302"]
+discovery.zen.ping_timeout:60s
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
 #
@@ -103,5 +104,5 @@ node.max_local_storage_nodes: 256
 transport.tcp.port: 9300
 transport.tcp.compress: true
 action.auto_create_index: .security,.monitoring*,.watches,.triggered_watches,.watcher-history*,.ml*
-
 ```
+
