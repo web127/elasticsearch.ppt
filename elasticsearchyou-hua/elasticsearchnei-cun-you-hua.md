@@ -45,11 +45,12 @@ es 5.x以上，一般推荐在jvm.options文件里面去设置jvm相关的参数
 （2）禁止swapping
 （3）确保拥有足够的虚拟内存
 （4）确保拥有足够的线程数量
+（5）允许es有最大虚拟内存大小的检查
 在/etc/security/limits.conf中
 1.资源限制
 
 ```
-esuser soft nofile 65536
+#esuser soft nofile 65536
 esuser hard nofile 65536
 ```
 
@@ -69,7 +70,7 @@ bootstrap.memory_lock: true
 ![](/assets/31.png)
 
 ```
-esuser soft memlock unlimited
+#esuser soft memlock unlimited
 esuser hard memlock unlimited
 
 ```
@@ -90,7 +91,13 @@ vm.max_map_count=262144
 在/etc/security/limits.conf中设置nproc为2048来确保es用户能创建的最大线程数量至少在2048以上。
 
 ```
-esuser soft nproc 2048
+#esuser soft nproc 2048
 esuser hard nproc 2048
 ```
+5.允许es有最大虚拟内存大小的检查
 
+```
+#esuser soft as unlimited
+esuser hard as unlimited
+
+```
