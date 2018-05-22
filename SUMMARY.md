@@ -1,8 +1,8 @@
 # Summary
 
 * [目录](README.md)
+* [前言](elasticsearchji-chu/11ji-chu.md)
 * [ElasticSearch基础](elasticsearchji-chu.md)
-  * [前言](elasticsearchji-chu/11ji-chu.md)
   * [基础概念](elasticsearchji-chu/11ji-chu-gai-nian.md)
   * [中文分词](elasticsearchji-chu/12zhong-wen-fen-ci.md)
   * [生产环境配置](elasticsearchji-chu/sheng-chan-huan-jing-pei-zhi.md)
