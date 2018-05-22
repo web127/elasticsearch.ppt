@@ -87,5 +87,10 @@ GET _nodes?filter_path=**.mlockall
 vm.max_map_count=262144
 ```
 4.确保拥有足够的线程数量
+在/etc/security/limits.conf中设置nproc为2048来确保es用户能创建的最大线程数量至少在2048以上。
 
+```
+esuser soft nproc 2048
+esuser hard nproc 2048
+```
 
