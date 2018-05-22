@@ -38,6 +38,7 @@ es 5.x以上，一般推荐在jvm.options文件里面去设置jvm相关的参数
 不要将超过32G内存的内存分配给es的jvm heap
 如果heap小于32G的化，jvm会用一种技术来压缩对象的指针，会自动采用32位pointer，如果你给jvm heap分配超过32G的内存，实际上是没有什么意义的，因为用64位的pointer，1/3的内存都给object pointer给占据了，超过32G,就没法用32位pointer。不用32位pointer，就只能用64位pointer，此时object pinter的大小会急剧增长，更多的cpu到内存的带宽会被占据，更多的内存被耗费。
 
+可以给jvm option加入-XX:+PrintFlagsFinal，然后可以打印出来UseCompressedOops是否为true。这就可以让我们找到最佳的内存设置。因为可以不断调节内存大小，然后观察是否启用compressed oops。
 #### 系统的配置
 在生产环境中下面的一些设置必须配置一下：
 
