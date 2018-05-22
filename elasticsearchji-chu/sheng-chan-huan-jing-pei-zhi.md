@@ -123,11 +123,12 @@ shard重新复制，移动，删除，再次移动的过程，会大量的耗费
 2.此时上线其他5个node
 3.复制到新上线的5个node，原来的5个node删除自己的shard
 
-优化的配置:
+生产优化的配置:
 gateway.expected_nodes: 3
 gateway.recover_after_time: 1m
 gateway.recover_after_nodes: 2
 等待至少2个节点在线，然后等待最多1分钟，或者3个节点都在线，开始shard recovery恢复的过程
 
+![](/assets/30.png)
 
 
