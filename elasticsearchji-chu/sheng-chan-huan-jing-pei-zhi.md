@@ -16,7 +16,7 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: docker_es
+cluster.name: es_prod
 #
 # ------------------------------------ Node ------------------------------------
 #

@@ -23,7 +23,6 @@
   * SpringBoot性能优化
 * [ElasticSearch的优化](elasticsearchyou-hua.md)
   * [ElasticSearch安全](elasticsearchyou-hua/11elasticsearchan-quan.md)
-  * [ElasticSearch配置优化](elasticsearchyou-hua/elasticsearchpei-zhi-you-hua.md)
   * [ElasticSearch硬件优化](elasticsearchyou-hua/elasticsearchnei-cun-you-hua.md)
 * [ElasticSearch学习教程](elasticsearchxue-xi-jiao-cheng.md)
 
