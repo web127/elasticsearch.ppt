@@ -65,3 +65,7 @@ esuser soft memlock unlimited
 esuser hard memlock unlimited
 
 ```
+查看配置是否成功:
+![](/assets/32.png)
+
+
