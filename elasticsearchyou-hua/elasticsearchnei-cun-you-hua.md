@@ -43,9 +43,9 @@ es 5.x以上，一般推荐在jvm.options文件里面去设置jvm相关的参数
 在生产环境中下面的一些设置必须配置一下：
 （1）资源限制
 （2）禁止swapping
-（3）确保拥有足够的虚拟内存
+（3）确保拥有足够的内存区域
 （4）确保拥有足够的线程数量
-（5）允许es有最大虚拟内存大小的检查
+（5）允许es有最大内存空间
 在/etc/security/limits.conf中
 1.资源限制
 
@@ -70,7 +70,7 @@ bootstrap.memory_lock: true
 ![](/assets/31.png)
 
 ```
-#esuser soft memlock unlimited
+esuser soft memlock unlimited
 esuser hard memlock unlimited
 
 ```
@@ -82,7 +82,8 @@ GET _nodes?filter_path=**.mlockall
 
 ![](/assets/32.png)
 
-3.确保拥有足够的虚拟内存
+3.确保拥有足够的内存区域
+ max_map_count定义了进程能拥有的最多内存区域
 修改/etc/sysctl.conf，将vm.max_map_count的值修改一下
 ```
 vm.max_map_count=262144
@@ -94,8 +95,8 @@ vm.max_map_count=262144
 #esuser soft nproc 2048
 esuser hard nproc 2048
 ```
-5.允许es有最大虚拟内存大小的检查
-
+5.允许es有最大内存空间
+es需要拥有unlimited address space。最大虚拟内存大小的检查，会要求es进程有unlimited address space。
 ```
 #esuser soft as unlimited
 esuser hard as unlimited
