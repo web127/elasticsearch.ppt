@@ -69,7 +69,7 @@ http.port: 9200
 #
 network.publish_host: 172.16.16.179
 discovery.zen.ping.unicast.hosts: ["172.16.16.179:9300","172.16.16.179:9301","172.16.16.178:9302"]
-discovery.zen.ping_timeout: 60s
+#discovery.zen.ping_timeout: 60s
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
 #这个参数决定了在选主过程中需要有多少个节点通信
@@ -113,7 +113,7 @@ action.auto_create_index: .security,.monitoring*,.watches,.triggered_watches,.wa
 添加：
 path.logs: /var/log/elasticsearch
 path.data: /var/data/elasticsearch
-discovery.zen.ping_timeout: 60s
+
 拷贝配置文件config下文件到其他目录/usr/local/esconfig/
 启动命令：
 ES_PATH_CONF=/usr/local/esconfig/ ./bin/elasticsearch
