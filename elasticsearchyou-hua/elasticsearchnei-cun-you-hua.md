@@ -66,6 +66,11 @@ esuser hard memlock unlimited
 
 ```
 查看配置是否成功:
+
+```
+GET _nodes?filter_path=**.mlockall
+```
+
 ![](/assets/32.png)
 
 
