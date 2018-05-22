@@ -23,10 +23,17 @@ es默认用的垃圾回收器是CMS。CMS回收器是并发式的回收器，能
 es不要去调节默认的jvm，对于es来说，大部分的参数都保留为默认的就可以了。
 在es中，默认的threadpool设置是非常合理的，大多数的磁盘IO操作都是由lucene的线程管理的，而不是由es管理的，因此es的线程不需要关心这个问题。
 
-1.jvm heap分配
+#### 1、jvm heap分配
 es默认会给jvm heap分配2个G的大小，对于几乎所有的生产环境来说，这个内存都太小了。如果用这个默认的heap size，在生产环境的集群肯定表现不会太好。
 调节有两个方式
 1.启动时
-比如：ES_JAVA_OPTS="-Xms10g -Xmx10g" ./bin/elasticsearch，但是要注意-Xms和-Xmx最小和最大堆内存一定设置的一样，避免运行过程中的jvm扩容，会消耗时间。
+比如：ES_JAVA_OPTS="-Xms10g -Xmx10g" ./bin/elasticsearch，但是要注意-Xms和-Xmx最小和最大堆内存一定设置的一样，避免运行过程中jvm扩容，会消耗时间。
 2.
 es 5.x以上，一般推荐在jvm.options文件里面去设置jvm相关的参数。
+
+#### 2、设置多大内存给es
+将机器上少于一半的内存分配给es，但是还有个觉得es读写搜索的用户lucene，是要使用底层的os filesystem cache来缓存数据结构，es的性能很大的一块，其实是由有多少内存留给操作系统的os cache，供lucene去缓存索引文件，来决定的。所以说lucene的os cache有多少是非常重要的。
+一般建议的是，将50%的内存分配给es jvm heap，然后留50%的内存给os cache。
+#### 3、不要超过32G内存
+不要将超过32G内存的内存分配给es的jvm heap
+如果heap小于32G的化，jvm会用一种技术来压缩对象的指针，如果你给jvm heap分配超过32G的内存，实际上是没有什么意义的，因为用64位的pointer，1/3的内存都给object pointer给占据了，超过32G,就没法用32位pointer。不用32位pointer，就只能用64位pointer，此时object pinter的大小会急剧增长，更多的cpu到内存的带宽会被占据，更多的内存被耗费。
