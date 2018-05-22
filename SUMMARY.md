@@ -20,7 +20,7 @@
 * [SpringBoot集成ES的操作](springbootji-cheng-es-de-cao-zuo.md)
   * [java操作ES](springbootji-cheng-es-de-cao-zuo/11javacao-zuo-es.md)
   * [Spring-data-elasticsearch操作ES](springbootji-cheng-es-de-cao-zuo/42.md)
-  * SpringBoot性能优化
+  * [SpringBoot性能优化](springbootji-cheng-es-de-cao-zuo/springbootxing-neng-you-hua.md)
 * [ElasticSearch的优化](elasticsearchyou-hua.md)
   * [ElasticSearch安全](elasticsearchyou-hua/11elasticsearchan-quan.md)
   * [ElasticSearch硬件优化](elasticsearchyou-hua/elasticsearchnei-cun-you-hua.md)
