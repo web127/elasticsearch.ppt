@@ -72,7 +72,7 @@ discovery.zen.ping.unicast.hosts: ["172.16.16.179:9300","172.16.16.179:9301","17
 discovery.zen.ping_timeout: 60s
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
-#这个参数决定了在选主过程中需要 有多少个节点通信
+#这个参数决定了在选主过程中需要有多少个节点通信
 discovery.zen.minimum_master_nodes: 2
 #
 # For more information, consult the zen discovery module documentation.
