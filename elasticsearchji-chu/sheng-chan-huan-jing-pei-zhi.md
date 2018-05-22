@@ -116,6 +116,18 @@ discovery.zen.ping_timeout: 60s
 ES_PATH_CONF=/usr/local/esconfig/ ./bin/elasticsearch
 
 
+shard重新复制，移动，删除，再次移动的过程，会大量的耗费网络和磁盘资源。对于数据量庞大的集群来说，可能导致每次集群重启时，都有TB级别的数据无端移动，可能导致集群启动会耗费很长时间。
+
+比如我本来有10个node,集群重启时，有5个node
+1.复制其他5个node的shard到本地
+2.此时上线其他5个node
+3.复制到新上线的5个node，原来的5个node删除自己的shard
+
+优化的配置:
+gateway.expected_nodes: 3
+gateway.recover_after_time: 1m
+gateway.recover_after_nodes: 2
+等待至少2个节点在线，然后等待最多1分钟，或者3个节点都在线，开始shard recovery恢复的过程
 
 
 
