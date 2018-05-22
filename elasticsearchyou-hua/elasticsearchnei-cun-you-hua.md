@@ -47,8 +47,15 @@ es 5.x以上，一般推荐在jvm.options文件里面去设置jvm相关的参数
 （3）确保拥有足够的线程数量
 1.swapping（交换）
 大多数操作系统都会使用尽量多的内存来进行file system cache，并且尽量将不经常使用的java应用的内存swap到磁盘中去。这会导致jvm heap的部分内存，甚至是用来执行代码的内存页被swap到磁盘中去。性能会有多差。
-因此通常建议彻底关闭机器上的swap，swapoff -a，如果要永久性关闭，需要在/etc/fstab中配置
+因此通常建议彻底关闭机器上的swap
 
-如果没法完全关闭swap，那么可以尝试调低swappiness至，这个值是控制os会如何将内存swap到磁盘的。这会在正常情况下阻止swap，但是在紧急情况下，还是会swap。一般用sysctl来设置，vm.swappiness = 1。如果swappiness也不能设置，那么就需要启用mlockall，这就可以让我们的jvm lock住自己的内存不被swap到磁盘上去，在elasticsearch.yml中可以设置：bootstrap.mlockall: true。
+1）临时性禁止swap：swapoff -a
+2）要永久性的禁止swap，需要修改/etc/fstab文件，然后将所有包含swap的行都注释掉
+3）配置swappiness，通过sysctl，将vm.swappiness设置为1，sysctl -w vm.swappiness=1
+4）启用bootstrap.memory_lock
+将es jvm进程的address space锁定在内存中，阻止es内存被swap out到磁盘上去。
+在config/elasticsearch.yml中，可以配置：
 
+bootstrap.memory_lock: true
 
+esuser  hard memlock unlimited
