@@ -41,14 +41,22 @@ es 5.x以上，一般推荐在jvm.options文件里面去设置jvm相关的参数
 可以给jvm option加入-XX:+PrintFlagsFinal，然后可以打印出来UseCompressedOops是否为true。这就可以让我们找到最佳的内存设置。可以不断调节内存大小，然后观察是否启用compressed oops。
 #### 系统配置优化
 在生产环境中下面的一些设置必须配置一下：
+（1）资源限制
+（2）禁止swapping
+（3）确保拥有足够的虚拟内存
+（4）确保拥有足够的线程数量
+在/etc/security/limits.conf中
+1.资源限制
 
-（1）禁止swapping
-（2）确保拥有足够的虚拟内存
-（3）确保拥有足够的线程数量
-1.swapping（交换）
+```
+esuser soft nofile 65536
+esuser hard nofile 65536
+```
+
+2.swapping（交换）
 大多数操作系统都会使用尽量多的内存来进行file system cache，并且尽量将不经常使用的java应用的内存swap到磁盘中去。这会导致jvm heap的部分内存，甚至是用来执行代码的内存页被swap到磁盘中去。性能会有多差。
 因此通常建议彻底关闭机器上的swap
-
+禁止的方式：
 1）临时性禁止swap：swapoff -a
 2）要永久性的禁止swap，需要修改/etc/fstab文件，然后将所有包含swap的行都注释掉
 3）配置swappiness，通过sysctl，将vm.swappiness设置为1，sysctl -w vm.swappiness=1
@@ -65,12 +73,19 @@ esuser soft memlock unlimited
 esuser hard memlock unlimited
 
 ```
-查看配置是否成功:
+查看配置是否成功：
 
 ```
 GET _nodes?filter_path=**.mlockall
 ```
 
 ![](/assets/32.png)
+
+3.确保拥有足够的虚拟内存
+修改/etc/sysctl.conf，将vm.max_map_count的值修改一下
+```
+vm.max_map_count=262144
+```
+4.确保拥有足够的线程数量
 
 
