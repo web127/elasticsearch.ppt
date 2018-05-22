@@ -57,5 +57,11 @@ es 5.x以上，一般推荐在jvm.options文件里面去设置jvm相关的参数
 在config/elasticsearch.yml中，可以配置：
 
 bootstrap.memory_lock: true
+启动会报锁定内存失败错误，需要设置/etc/security/limits.conf权限
+![](/assets/31.png)
 
-esuser  hard memlock unlimited
+```
+esuser soft memlock unlimited
+esuser hard memlock unlimited
+
+```
