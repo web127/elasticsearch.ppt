@@ -2,8 +2,7 @@
 1.慢查询或慢写入日志
 2.查询优化建议
 3.索引写入性能优化
-4.搜索性能优化
-5.磁盘读写性能优化
+
 
 
 #### 1.慢查询或慢写入日志
@@ -88,4 +87,6 @@ logger.index_indexing_slowlog.additivity = false
 如果我们要手动给es document设置一个id，那么es需要每次都去确认一下那个id是否存在，这个过程是比较耗费时间的。如果我们使用自动生成的id，那么es就可以跳过这个步骤，写入性能会更好。对于你的业务中的表id，可以作为es document的一个field。
 5、index buffer
 如果要进行非常重的高并发写入操作，那么最好将index buffer调大一些，indices.memory.index_buffer_size，这个可以调节大一些，设置的这个index buffer大小，是所有的shard公用的，但是如果除以shard数量以后，算出来平均每个shard可以使用的内存大小，一般建议，但是对于每个shard来说，最多给512mb，因为再大性能就没什么提升了。es会将这个设置作为每个shard共享的index buffer，那些特别活跃的shard会更多的使用这个buffer。默认这个参数的值是10%，也就是jvm heap的10%，如果我们给jvm heap分配10gb内存，那么这个index buffer就有1gb，对于两个shard共享来说，是足够的了。
+
+
 
