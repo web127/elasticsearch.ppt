@@ -23,7 +23,11 @@
   * [Spring-data-elasticsearch操作ES](springbootji-cheng-es-de-cao-zuo/42.md)
   * [SpringBoot性能优化](springbootji-cheng-es-de-cao-zuo/springbootxing-neng-you-hua.md)
 * [ElasticSearch的优化](elasticsearchyou-hua.md)
-  * [ElasticSearch安全](elasticsearchyou-hua/11elasticsearchan-quan.md)
-  * [ElasticSearch优化](elasticsearchyou-hua/elasticsearchnei-cun-you-hua.md)
+  * [ElasticSearch安全插件x-pack](elasticsearchyou-hua/11elasticsearchan-quan.md)
+  * [ElasticSearch系统优化](elasticsearchyou-hua/elasticsearchnei-cun-you-hua.md)
+  * [ElasticSearch数据的备份与恢复](elasticsearchyou-hua/elasticsearchshu-ju-de-bei-fen-yu-hui-fu.md)
+  * [ElasticSearch性能调优](elasticsearchyou-hua/elasticsearchxing-neng-diao-you.md)
+  * [ElasticSearch集群监控](elasticsearchyou-hua/elasticsearchji-qun-jian-kong.md)
+* [ElasticSearch原理深入研究](elasticsearchyuan-li-shen-ru-yan-jiu.md)
 * [ElasticSearch学习网站](elasticsearchxue-xi-jiao-cheng.md)
 

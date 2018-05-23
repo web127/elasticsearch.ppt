@@ -1,4 +1,4 @@
-# ElasticSearch优化
+# ElasticSearch系统优化
 
 1.内存
 es生产环境中是很吃内存的，吃的机器的内存，jvm heap（堆内存）还是用的比较少的

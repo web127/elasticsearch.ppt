@@ -146,5 +146,7 @@ gateway.recover_after_nodes: 2
 
 ![](/assets/30.png)
 
-#### es关闭优化
+#### es关闭
+jps | grep Elasticsearch
 
+kill -SIGTERM 进程号
