@@ -1,6 +1,6 @@
 #ElasticSearch性能调优
 1.慢查询或慢写入日志
-2.优化建议
+2.查询优化建议
 3.索引写入性能优化
 4.搜索性能优化
 5.磁盘读写性能优化
@@ -73,3 +73,10 @@ logger.index_indexing_slowlog.level = trace
 logger.index_indexing_slowlog.appenderRef.index_indexing_slowlog_rolling.ref = index_indexing_slowlog_rolling
 logger.index_indexing_slowlog.additivity = false
 ```
+#### 查询优化建议
+1.搜索结果不要返回过大的结果集
+2.document的内容不要超过100mb，http.max_context_length的默认值是100mb，es会拒绝写入。
+
+#### 索引写入性能优化
+1.用bulk批量写入
+

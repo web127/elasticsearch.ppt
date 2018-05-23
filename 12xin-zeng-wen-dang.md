@@ -26,4 +26,19 @@ PUT /order_index/order_type/3
 }
 ```
 
+#### 使用bulk批量写入数据
+bulk api
+
+```
+POST /order_index/order_type/_bulk
+{ "index" : { "_index" : "test", "_type" : "_doc", "_id" : "1" } }
+{ "field1" : "value1" }
+{ "delete" : { "_index" : "test", "_type" : "_doc", "_id" : "2" } }
+{ "create" : { "_index" : "test", "_type" : "_doc", "_id" : "3" } }
+{ "field1" : "value3" }
+{ "update" : {"_id" : "1", "_type" : "_doc", "_index" : "test"} }
+{ "doc" : {"field2" : "value2"} }
+```
+
+
 
