@@ -49,11 +49,14 @@ es 5.x以上，一般推荐在jvm.options文件里面去设置jvm相关的参数
 （4）确保用户可用的最大进程数量
 （5）地址空间限制
 在/etc/security/limits.conf中
+
+>有soft，hard和-，soft指的是当前系统生效的设置值，软限制也可以理解为警告值。hard表名系统中所能设定的最大值。soft的限制不能比hard限制高
+
 ##### 1.确保用户打开文件的最大数目
 soft nofile：确保用户打开文件的最大数目(软限制)
 hard nofile：确保用户打开文件的最大数目(硬限制)
 ```
-#esuser soft nofile 65536
+esuser soft nofile 65536
 esuser hard nofile 131072
 ```
 
@@ -98,14 +101,13 @@ vm.max_map_count=655360
 soft nproc: 确保用户可用的最大进程数量(软限制)
 hard nproc： 确保用户可用的最大进程数量(硬限制)
 ```
-#esuser soft nproc 4096
-
+esuser soft nproc 2048
 esuser hard nproc 4096
 ```
 ##### 5.地址空间限制
 es需要拥有unlimited address space。最大虚拟内存大小的检查，会要求es进程有unlimited address space。
 ```
-#esuser soft as unlimited
+esuser soft as unlimited
 esuser hard as unlimited
 
 ```
