@@ -114,7 +114,7 @@ action.auto_create_index: .security,.monitoring*,.watches,.triggered_watches,.wa
 path.logs: /var/log/elasticsearch
 path.data: /var/data/elasticsearch
 
-拷贝配置文件config下文件到其他目录/usr/local/esconfig/
+拷贝配置文件config下文件elasticsearch.yml到其他目录/usr/local/esconfig/
 启动命令：
 ES_PATH_CONF=/usr/local/esconfig/ ./bin/elasticsearch -d
 
