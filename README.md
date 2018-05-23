@@ -1,14 +1,20 @@
 ## Elasticsearch学习笔记
+
 ## 在线阅读地址：[Elasticsearch学习笔记](https://legacy.gitbook.com/book/zhaheng/elasticsearch-book/details)
+
 ---
+
 #### [GitHub地址](http://github.com/zhaheng/elasticsearch.ppt)
+
 #### 作者：zhaheng
+
 ---
+
 ## 目录：
 
 * [目录](README.md)
+* [前言](elasticsearchji-chu/11ji-chu.md)
 * [ElasticSearch基础](elasticsearchji-chu.md)
-  * [前言](elasticsearchji-chu/11ji-chu.md)
   * [基础概念](elasticsearchji-chu/11ji-chu-gai-nian.md)
   * [中文分词](elasticsearchji-chu/12zhong-wen-fen-ci.md)
   * [生产环境配置](elasticsearchji-chu/sheng-chan-huan-jing-pei-zhi.md)
@@ -29,9 +35,13 @@
   * [Spring-data-elasticsearch操作ES](springbootji-cheng-es-de-cao-zuo/42.md)
   * [SpringBoot性能优化](springbootji-cheng-es-de-cao-zuo/springbootxing-neng-you-hua.md)
 * [ElasticSearch的优化](elasticsearchyou-hua.md)
-  * [ElasticSearch安全](elasticsearchyou-hua/11elasticsearchan-quan.md)
-  * [ElasticSearch硬件优化](elasticsearchyou-hua/elasticsearchnei-cun-you-hua.md)
-* [ElasticSearch学习教程](elasticsearchxue-xi-jiao-cheng.md)
+  * [ElasticSearch安全插件x-pack](elasticsearchyou-hua/11elasticsearchan-quan.md)
+  * [ElasticSearch系统优化](elasticsearchyou-hua/elasticsearchnei-cun-you-hua.md)
+  * [ElasticSearch数据的备份与恢复](elasticsearchyou-hua/elasticsearchshu-ju-de-bei-fen-yu-hui-fu.md)
+  * [ElasticSearch性能调优](elasticsearchyou-hua/elasticsearchxing-neng-diao-you.md)
+  * [ElasticSearch集群监控](elasticsearchyou-hua/elasticsearchji-qun-jian-kong.md)
+* [ElasticSearch学习网站](elasticsearchxue-xi-jiao-cheng.md)
+* [ElasticSearch原理深入](elasticsearchyuan-li-shen-ru-yan-jiu.md)
 
 
 
