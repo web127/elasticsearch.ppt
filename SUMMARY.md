@@ -24,6 +24,6 @@
   * [SpringBoot性能优化](springbootji-cheng-es-de-cao-zuo/springbootxing-neng-you-hua.md)
 * [ElasticSearch的优化](elasticsearchyou-hua.md)
   * [ElasticSearch安全](elasticsearchyou-hua/11elasticsearchan-quan.md)
-  * [ElasticSearch硬件优化](elasticsearchyou-hua/elasticsearchnei-cun-you-hua.md)
+  * [ElasticSearch优化](elasticsearchyou-hua/elasticsearchnei-cun-you-hua.md)
 * [ElasticSearch学习网站](elasticsearchxue-xi-jiao-cheng.md)
 
