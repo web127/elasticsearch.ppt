@@ -15,13 +15,13 @@
 # ---------------------------------- Cluster -----------------------------------
 #
 # Use a descriptive name for your cluster:
-#
+#集群名称，默认是elasticsearch
 cluster.name: es_prod
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
-#
+#节点名称
 node.name: docker_node1
 #
 # Add custom attributes to the node:
@@ -31,17 +31,17 @@ node.name: docker_node1
 # ----------------------------------- Paths ------------------------------------
 #
 # Path to directory where to store the data (separate multiple locations by comma):
-#
+#可以指定es的数据存储目录，默认存储在es_home/data目录下
 path.data: /var/data/elasticsearch
 #
 # Path to log files:
-#
+#可以指定es的日志存储目录，默认存储在es_home/logs目录下
 path.logs: /var/log/elasticsearch
 #
 # ----------------------------------- Memory -----------------------------------
 #
 # Lock the memory on startup:
-#
+#锁定物理内存地址，防止elasticsearch内存被交换出去,也就是避免es使用swap交换分区
 bootstrap.memory_lock: true
 #
 # Make sure that the heap size is set to about half the memory available
@@ -53,11 +53,12 @@ bootstrap.memory_lock: true
 # ---------------------------------- Network -----------------------------------
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
-#
+#为es设置ip绑定，默认是127.0.0.1，也就是默认只能通过127.0.0.1 或者localhost才能访问
 network.host: 0.0.0.0
 #
 # Set a custom port for HTTP:
-#
+#为es设置自定义端口，默认是9200
+#在同一个服务器中启动多个es节点的话，默认监听的端口号会自动加1：例如：9200，9201，9202...
 http.port: 9200
 #
 # For more information, consult the network module documentation.
@@ -66,13 +67,14 @@ http.port: 9200
 #
 # Pass an initial list of hosts to perform discovery when new node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
-#
+#设置其他节点连接此节点的地址，如果不设置的话，则自动获取
 network.publish_host: 172.16.16.179
+#通过这个ip列表进行节点发现，组建集群
 discovery.zen.ping.unicast.hosts: ["172.16.16.179:9300","172.16.16.179:9301","172.16.16.178:9302"]
 #discovery.zen.ping_timeout: 60s
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
-#这个参数决定了在选主过程中需要有多少个节点通信
+#这个参数决定了在选主过程中需要有多少个节点通信，通过配置这个参数来防止集群脑裂现象 (集群总节点数量/2)+1
 discovery.zen.minimum_master_nodes: 2
 #
 # For more information, consult the zen discovery module documentation.
@@ -80,10 +82,13 @@ discovery.zen.minimum_master_nodes: 2
 # ---------------------------------- Gateway -----------------------------------
 #
 # Block initial recovery after a full cluster restart until N nodes are started:
-#
+
 #gateway.recover_after_nodes: 3
+#预期的节点加入集群，就进行数据恢复处理
 gateway.expected_nodes: 3
+#如未达到预期的节点加入集群，需要等待的时间
 gateway.recover_after_time: 1m
+#一个集群中的N个节点启动后,才允许进行数据恢复处理，默认是1
 gateway.recover_after_nodes: 2
 #
 # For more information, consult the gateway module documentation.
