@@ -43,20 +43,21 @@ es 5.x以上，一般推荐在jvm.options文件里面去设置jvm相关的参数
 
 #### 系统配置优化
 在生产环境中下面的一些设置必须配置一下：
-（1）资源限制
+（1）确保用户打开文件的最大数目
 （2）禁止swapping
 （3）确保拥有足够的内存区域
-（4）确保拥有足够的线程数量
-（5）允许es有最大内存空间
+（4）确保用户可用的最大进程数量
+（5）地址空间限制
 在/etc/security/limits.conf中
-1.资源限制
-
+##### 1.确保用户打开文件的最大数目
+soft nofile：确保用户打开文件的最大数目(软限制)
+hard nofile：确保用户打开文件的最大数目(硬限制)
 ```
 #esuser soft nofile 65536
 esuser hard nofile 131072
 ```
 
-2.swapping（交换）
+##### 2.swapping（交换）
 大多数操作系统都会使用尽量多的内存来进行file system cache，并且尽量将不经常使用的java应用的内存swap到磁盘中去。这会导致jvm heap的部分内存，甚至是用来执行代码的内存页被swap到磁盘中去。性能会有多差。
 因此通常建议彻底关闭机器上的swap
 禁止的方式：
@@ -71,6 +72,7 @@ bootstrap.memory_lock: true
 启动会报锁定内存失败错误，需要设置/etc/security/limits.conf权限
 ![](/assets/31.png)
 
+确保最大锁定内存地址空间
 ```
 esuser soft memlock unlimited
 esuser hard memlock unlimited
@@ -84,22 +86,23 @@ GET _nodes?filter_path=**.mlockall
 
 ![](/assets/32.png)
 
-3.确保拥有足够的内存区域
+##### 3.确保拥有足够的内存区域
  max_map_count定义了进程能拥有的最多内存区域
 修改/etc/sysctl.conf，将vm.max_map_count的值修改一下
 ```
 vm.max_map_count=655360
 ```
-4.确保拥有足够的线程数量
+##### 4.确保用户可用的最大进程数量
 在/etc/security/limits.conf中设置nproc为4096
 来确保es用户能创建的最大线程数量至少在4096以上。
-
+soft nproc: 确保用户可用的最大进程数量(软限制)
+hard nproc： 确保用户可用的最大进程数量(硬限制)
 ```
 #esuser soft nproc 4096
 
 esuser hard nproc 4096
 ```
-5.允许es有最大内存空间
+##### 5.地址空间限制
 es需要拥有unlimited address space。最大虚拟内存大小的检查，会要求es进程有unlimited address space。
 ```
 #esuser soft as unlimited
