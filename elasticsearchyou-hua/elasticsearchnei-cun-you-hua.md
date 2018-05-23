@@ -110,7 +110,7 @@ vm.max_map_count=655360
 soft nproc: 确保用户可用的最大进程数量(软限制)
 hard nproc： 确保用户可用的最大进程数量(硬限制)
 ```
-esuser soft nproc 2048
+esuser soft nproc 4096
 esuser hard nproc 4096
 ```
 ##### 5.地址空间限制
