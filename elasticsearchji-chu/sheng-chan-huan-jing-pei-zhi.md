@@ -119,6 +119,10 @@ path.data: /var/data/elasticsearch
 ES_PATH_CONF=/usr/local/esconfig/ ./bin/elasticsearch
 
 
+#### 将es的bin加入环境变量PATH中
+
+
+
 shard重新复制，移动，删除，再次移动的过程，会大量的耗费网络和磁盘资源。对于数据量庞大的集群来说，可能导致每次集群重启时，都有TB级别的数据无端移动，可能导致集群启动会耗费很长时间。
 
 比如我本来有10个node,集群重启时，有5个node
