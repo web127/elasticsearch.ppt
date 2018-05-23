@@ -39,6 +39,8 @@ es 5.x以上，一般推荐在jvm.options文件里面去设置jvm相关的参数
 如果heap小于32G的化，jvm会用一种技术来压缩对象的指针，会自动采用32位pointer，如果你给jvm heap分配超过32G的内存，实际上是没有什么意义的，因为用64位的pointer，1/3的内存都给object pointer给占据了，超过32G,就没法用32位pointer。不用32位pointer，就只能用64位pointer，此时object pinter的大小会急剧增长，更多的cpu到内存的带宽会被占据，更多的内存被耗费。
 
 可以给jvm option加入-XX:+PrintFlagsFinal，然后可以打印出来UseCompressedOops是否为true。这就可以让我们找到最佳的内存设置。可以不断调节内存大小，然后观察是否启用compressed oops。
+![](/assets/33.png)
+
 #### 系统配置优化
 在生产环境中下面的一些设置必须配置一下：
 （1）资源限制
@@ -51,7 +53,7 @@ es 5.x以上，一般推荐在jvm.options文件里面去设置jvm相关的参数
 
 ```
 #esuser soft nofile 65536
-esuser hard nofile 65536
+esuser hard nofile 131072
 ```
 
 2.swapping（交换）
@@ -86,14 +88,16 @@ GET _nodes?filter_path=**.mlockall
  max_map_count定义了进程能拥有的最多内存区域
 修改/etc/sysctl.conf，将vm.max_map_count的值修改一下
 ```
-vm.max_map_count=262144
+vm.max_map_count=655360
 ```
 4.确保拥有足够的线程数量
-在/etc/security/limits.conf中设置nproc为2048来确保es用户能创建的最大线程数量至少在2048以上。
+在/etc/security/limits.conf中设置nproc为4096
+来确保es用户能创建的最大线程数量至少在4096以上。
 
 ```
-#esuser soft nproc 2048
-esuser hard nproc 2048
+#esuser soft nproc 4096
+
+esuser hard nproc 4096
 ```
 5.允许es有最大内存空间
 es需要拥有unlimited address space。最大虚拟内存大小的检查，会要求es进程有unlimited address space。

@@ -116,10 +116,18 @@ path.data: /var/data/elasticsearch
 
 拷贝配置文件config下文件到其他目录/usr/local/esconfig/
 启动命令：
-ES_PATH_CONF=/usr/local/esconfig/ ./bin/elasticsearch
+ES_PATH_CONF=/usr/local/esconfig/ ./bin/elasticsearch -d
 
 
 #### 将es的bin加入环境变量PATH中
+```
+export ES_HOME=/usr/local/elasticsearch-6.2.2
+export PATH=$ES_HOME/bin
+```
+
+执行source profile生效后启动
+ES_PATH_CONF=/usr/local/esconfig/  elasticsearch -d
+
 
 
 
