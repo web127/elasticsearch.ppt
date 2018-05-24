@@ -82,7 +82,8 @@ GET /index/type/_search
 ```
 
 match_phrase 短语搜索文档
->要求输入的搜索词，必须在指定的字段文本中，完全包含一模一样的，才可以作为结果返回
+要求输入的搜索词，必须在指定的字段文本中，完全包含一模一样的，才可以作为结果返回
+
 ```
 GET /index/type/_search
 {
@@ -150,6 +151,51 @@ GET /index/type/_search
             "filter" : {
                 "range" : {
                     "price" : { "gt" : 50 } 
+                }
+            }
+        }
+    }
+}
+```
+分组
+
+```
+GET /index/type/_search
+{
+  "aggs": {
+    "group_by_orderName": {
+      "terms": { "field": "orderName" }
+    }
+  }
+}
+```
+
+对字符串类型聚合需要将field的fielddata属性设置为true
+
+```
+PUT /index/_mapping/type
+{
+  "properties": {
+    "orderName": {
+      "type": "text",
+      "fielddata": true
+    }
+  }
+}
+```
+
+平均值,分组后计算平均值
+
+```
+GET /index/type/_search
+{
+    "size": 0,
+    "aggs" : {
+        "group_by_orderName" : {
+            "terms" : { "field" : "orderName" },
+            "aggs" : {
+                "avg_price" : {
+                    "avg" : { "field" : "price" }
                 }
             }
         }

@@ -66,3 +66,50 @@ hits.total：查询结果的数量，3个document
 hits.max_score：score的含义，就是document对于一个search的相关度的匹配分数，越相关，就越匹配，分数也高
 hits.hits：包含了匹配搜索的document的详细数据
 
+9.Elasticsearch的垂直扩容与水平扩容
+>垂直扩容：采购更强大的服务器增加硬件容量，成本非常高昂
+
+>水平扩容：采购很多的普通服务器，构成强大的计算和存储能力
+
+10.master节点作用？
+默认es会选出一个master节点，主要用于
+>（1）索引创建或删除
+（2）节点增加或删除
+
+11.节点分布式架构？
+>每个节点都知道任一文档的位置，并转发请求到目标节点。为了扩展负载，更好的做法是轮询所有节点，以单节点免压力过大。
+
+12.文档到分片的位置算法？
+
+>ES索引文档到分片遵从公式：shard = hash(routing) % number_of_primary_shards 
+routing是一个可变值，默认你为文档_id
+
+13.primary shard和replica shard的作用？
+>每个shard都是一个lucene实例，拥有完整的建立索引和处理请求的能力
+replica shard负责容错，以及承担读请求负载
+primary shard的默认数量是5，replica默认是1，primary shard的数量一旦创建不可更改
+primary shard不会和自己的replica shard放在同一个节点上
+
+14.如何提升shard性能
+>每个node有更少的shard，IO/CPU/Memory资源给每个shard分配更多，每个shard性能更好
+如3台机器：
+9个shard（3 primary，6 replica）性能较差，容错好，容纳2台机器宕机，此时应该增加硬件数量来提升吞吐量
+6个shard（3 primary，3 replica）性能较好，容错差，只能容纳0台机器宕机
+
+![](/assets/36.png)
+
+15.扩容的极限？
+>扩容的极限是不会将两个相同副本节点分配到同一个节点
+节点数和副本数的关系应该为N>=R+1 （其中N为节点数，R为副本数量）
+
+16.单个Lucene索引中拥有最大数量？
+>限制是2,147,483,519（= Integer.MAX_VALUE - 128）文件
+
+17.容错机制过程
+>1)master node宕机，自动master选举
+2)replica容错：新master将replica提升为primary shard
+3)重启宕机node，master 移动shard到该node，并会进行对原有的shard和目前的primary shard进行同步
+
+18.自动生成的id唯一吗？
+>自动生成的id，长度为20个字符，URL安全，base64编码，GUID，分布式系统并行生成时不可能会发生冲突
+
