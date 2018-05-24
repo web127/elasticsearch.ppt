@@ -29,5 +29,6 @@
   * [ElasticSearch性能调优](elasticsearchyou-hua/elasticsearchxing-neng-diao-you.md)
   * [ElasticSearch集群监控](elasticsearchyou-hua/elasticsearchji-qun-jian-kong.md)
 * [ElasticSearch学习网站](elasticsearchxue-xi-jiao-cheng.md)
-* [ElasticSearch原理深入](elasticsearchyuan-li-shen-ru-yan-jiu.md)
+* [ElasticSearch问题总结](elasticsearchyuan-li-shen-ru-yan-jiu.md)
+  * [ElasticSearch问题](elasticsearchyuan-li-shen-ru-yan-jiu/elasticsearchgai-nian.md)
 
