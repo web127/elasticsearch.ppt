@@ -57,7 +57,7 @@ ES的mapping非常类似于静态语言中的数据类型：声明一个变量�
 yellow：每个索引的primary shard都是active状态的，但是部分replica shard不是active状态，处于不可用的状态
 red：不是所有索引的primary shard都是active状态的，部分索引有数据丢失了
 
-8.查询文档的结果含义？
+8.查询文档返回结果的含义？
 
 >took：耗费了几毫秒
 timed_out：是否超时，这里是没有
