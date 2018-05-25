@@ -89,7 +89,7 @@
 
 12.文档到分片的位置算法？
 
-> ES索引文档到分片遵从公式：shard = hash\(routing\) % number\_of\_primary\_shards   
+> ES索引文档到分片遵从公式：shard = hash\(routing\) % number\_of\_primary\_shards  
 > routing是一个可变值，默认你为文档\_id
 
 13.primary shard和replica shard的作用？
@@ -104,7 +104,7 @@
 > 每个node有更少的shard，IO/CPU/Memory资源给每个shard分配更多，每个shard性能更好  
 > 如3台机器：  
 > 9个shard（3 primary，6 replica）性能较差，容错好，容纳2台机器宕机，此时应该增加硬件数量来提升吞吐量  
-> 6个shard（3 primary，3 replica）性能较好，容错差，只能容纳0台机器宕机
+> 6个shard（3 primary，3 replica）性能较好，容错差，只能容纳1台机器宕机
 
 ![](/assets/36.png)
 
@@ -127,8 +127,13 @@
 
 > 自动生成的id，长度为20个字符，URL安全，base64编码，GUID，分布式系统并行生成时不可能会发生冲突
 
-19.Elasticsearch并发冲突问题?  
->Elasticsearch 是异步和并发的，当文档创建、更新或删除时， 节点之间复制顺序是乱的
-es使用_version乐观锁来达到这个目的， 请求时带版本号参数，如果该版本不是当前版本号，请求将会失败
+19.Elasticsearch并发冲突问题?
+
+> Elasticsearch 是异步和并发的，当文档创建、更新或删除时， 节点之间复制顺序是乱的  
+> es使用\_version乐观锁来达到这个目的， 请求时带版本号参数，如果该版本不是当前版本号，请求将会失败
+
+20.
+
+
 
 
