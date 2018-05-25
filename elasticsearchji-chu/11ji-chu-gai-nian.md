@@ -18,6 +18,16 @@
 
 ###### 手动自定义分片：
 
+```
+{
+  "settings": {
+    "number_of_shards": "3",
+    "number_of_replicas": "1",
+    "refresh_interval": "30s"
+  }
+}
+```
+
 ![](/assets/1.png)
 
 * primary shard默认为5个，并且一旦建好不能修改，replica shard默认1个，随时修改数量
