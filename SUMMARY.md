@@ -5,7 +5,7 @@
 * [ElasticSearch基础](elasticsearchji-chu.md)
   * [基础概念](elasticsearchji-chu/11ji-chu-gai-nian.md)
   * [生产环境配置](elasticsearchji-chu/sheng-chan-huan-jing-pei-zhi.md)
-* ElasticSearch插件
+* [ElasticSearch插件](elasticsearchcha-jian.md)
   * [ElasticSearch-head插件](elasticsearchji-chu/elasticsearch-headcha-jian.md)
   * [中文分词](elasticsearchji-chu/12zhong-wen-fen-ci.md)
   * [ElasticSearch安全插件x-pack](elasticsearchyou-hua/11elasticsearchan-quan.md)
