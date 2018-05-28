@@ -1,10 +1,10 @@
 ##### 这是一本ElasticSearch入门学习文档，然后...
 
 
-[GitHub开源地址](http://github.com/zhaheng/elasticsearch.ppt)
-[码云开源地址](https://gitee.com/zhaheng/elasticsearch.ppt)
-[在线阅读](https://legacy.gitbook.com/book/zhaheng/elasticsearch-book/details)
-
+##### [GitHub开源地址](http://github.com/zhaheng/elasticsearch.ppt)
+##### [码云开源地址](https://gitee.com/zhaheng/elasticsearch.ppt)
+##### [在线阅读](https://legacy.gitbook.com/book/zhaheng/elasticsearch-book/details)
+##### [PDF下载](https://legacy.gitbook.com/download/pdf/book/zhaheng/elasticsearch-book)
 本书完成章节
 
 - [ ] ElasticSearch基础
