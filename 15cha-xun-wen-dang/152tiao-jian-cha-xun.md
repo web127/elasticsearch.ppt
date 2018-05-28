@@ -7,7 +7,7 @@ multi_match 
 match_phrase
 range
 term和terms
-bool和must、must_not、should
+bool查询包含：must、must_not、should、filter
 wildcards 
 regexp 
 prefix 
