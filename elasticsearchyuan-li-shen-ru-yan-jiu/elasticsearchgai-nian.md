@@ -137,7 +137,7 @@
 
 20.部分更新和全量更新的原理
 
-PUT /index/type/id 创建文档&替换文档，就是一样的语法
+>PUT /index/type/id 创建文档&替换文档，就是一样的语法
 一般对应到应用程序中，每次的执行流程基本是这样的：
 1、应用程序发起一个get请求，获取到document，展示到前台界面，供用户查看和修改
 2、用户在前台界面修改数据，发送到后台
@@ -145,7 +145,7 @@ PUT /index/type/id 创建文档&替换文档，就是一样的语法
 4、然后发送PUT请求到es中，进行全量替换
 5、es将老的document标记为delete，然后重新创建一个新的document
 
-什么是partial update？
+>什么是partial update？
 POST /index/type/id/_update
 {
 　　"doc" : {
@@ -160,11 +160,11 @@ POST /index/type/id/_update
 3、将老的document标记为deleted
 4、将修改后的新的document创建出来
 
-partial update相较于全量替换的优点：
+>partial update相较于全量替换的优点：
 1、全量替换需要将数据从es中通过java应用程序传输到用户界面，然后用户在前台界面修改后，再通过java应用程序写入到es中去，而partial update的所有查询、修改和写回操作，都发生在es中的一个shard内部，避免了所有网络数据传输的开销（减少了两次网络请求），大大提升了性能
 2、全量替换，查询结果放在界面，用户修改就有可能经历10分钟或者更长时间，然后修改完以后再写回去，可能es中的数据早已经被别人修改了，所以并发冲突的情况就会发生的较多。而partial update的查询、修改和写回都发生在es中一个shard内部，一瞬间就完成修改，可能耗时就是毫秒级别的，所以可以大大减少并发冲突的情况。
 
-partial update 涉及到的两个知识点：
+>partial update 涉及到的两个知识点：
 1、retry_on_conflict = n（如果第一次更新失败，接下来会重新获取新的version版本号，继续尝试更新。这个过程会持续N次）
 POST /index/type/id/_update?retry_on_conflict=n
 2、version（指定特定的版本号）
@@ -172,8 +172,15 @@ POST /index/type/id/_update?version=n
 
 21.document路由到shard原理
 
-路由算法：shard = hash(routing) % number_of_primary_shards
+>路由算法：shard = hash(routing) % number_of_primary_shards
 
-routing值，默认是_id，也可以手动指定，比如：
+>routing值，默认是_id，也可以手动指定，比如：
 put /index/type/id?routing=user_id
 primary shard数量不可变，否则根据这个公式，之前的数据就找不到了
+
+22.es的增删改原理
+
+>（1）客户端选择一个node发送请求过去，这个node就是coordinating node（协调节点）
+（2）coordinating node，对document进行路由，将请求转发给对应的node（有primary shard）
+（3）实际的node上的primary shard处理请求，然后将数据同步到replica node
+（4）coordinating node，如果发现primary node和所有replica node都搞定之后，就返回响应结果给客户端
