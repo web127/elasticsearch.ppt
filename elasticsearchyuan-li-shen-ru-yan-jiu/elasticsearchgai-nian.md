@@ -274,3 +274,6 @@ PUT /order_index_new/_mapping/order_type
   }
 }
 ```
+![](/assets/55.png)
+
+默认字符串排序需要设置
