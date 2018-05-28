@@ -227,3 +227,10 @@ PUT index/_settings?preserve_existing=true
 filter，不计算相关度分数，不按照相关度分数排序，同时还内置自动cache最常使用filter的数据
 query，计算相关度分数，按照分数进行排序，而且无法cache结果
 因此filter性能高于query
+
+27.如何定位你的查询语法是否合法？
+
+```
+POST /order_index/order_type/_validate/query?explain
+```
+![](/assets/54.png)
