@@ -170,5 +170,6 @@ POST /index/type/id/_update?retry_on_conflict=n
 2、version（指定特定的版本号）
 POST /index/type/id/_update?version=n
 
+21.
 
 
