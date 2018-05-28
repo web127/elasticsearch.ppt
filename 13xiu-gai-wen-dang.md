@@ -19,7 +19,7 @@ PUT /order_index/order_type/1
 ![](/assets/11.png)
 
 修改后可以看到_version变化
-#####修改文档的部分数据
+#####修改文档的部分数据（推荐）
 
 需要POST请求,带_update动词
 ```
