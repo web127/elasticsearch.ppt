@@ -313,5 +313,5 @@ POST order_index_new/order_type/
 
 >doc values，如果内存足够，os会自动将其缓存在内存中，性能会很高；如果内存不够，os会将其写入磁盘上
 
-30.query phase和fetch phase原理
+
 

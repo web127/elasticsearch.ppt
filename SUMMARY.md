@@ -31,6 +31,7 @@
   * [ElasticSearch数据的备份与恢复](elasticsearchyou-hua/elasticsearchshu-ju-de-bei-fen-yu-hui-fu.md)
   * [ElasticSearch性能调优](elasticsearchyou-hua/elasticsearchxing-neng-diao-you.md)
   * [ElasticSearch集群监控](elasticsearchyou-hua/elasticsearchji-qun-jian-kong.md)
+  * [ElasticSearch零停机重建索引](elasticsearchyou-hua/elasticsearchling-ting-ji-zhong-jian-suo-yin.md)
 * [ElasticSearch问题汇总](elasticsearchyuan-li-shen-ru-yan-jiu.md)
   * [ElasticSearch问题](elasticsearchyuan-li-shen-ru-yan-jiu/elasticsearchgai-nian.md)
 * [ElasticSearch学习网站](elasticsearchxue-xi-jiao-cheng.md)
