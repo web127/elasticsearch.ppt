@@ -17,7 +17,7 @@
 * [ElasticSearch基础](elasticsearchji-chu.md)
 * [基础概念](elasticsearchji-chu/11ji-chu-gai-nian.md)
 * [生产环境配置](elasticsearchji-chu/sheng-chan-huan-jing-pei-zhi.md)
-* ElasticSearch插件
+* [ElasticSearch插件](elasticsearchcha-jian.md)
 * [ElasticSearch-head插件](elasticsearchji-chu/elasticsearch-headcha-jian.md)
 * [中文分词](elasticsearchji-chu/12zhong-wen-fen-ci.md)
 * [ElasticSearch安全插件x-pack](elasticsearchyou-hua/11elasticsearchan-quan.md)
@@ -43,7 +43,7 @@
 * [ElasticSearch数据的备份与恢复](elasticsearchyou-hua/elasticsearchshu-ju-de-bei-fen-yu-hui-fu.md)
 * [ElasticSearch性能调优](elasticsearchyou-hua/elasticsearchxing-neng-diao-you.md)
 * [ElasticSearch集群监控](elasticsearchyou-hua/elasticsearchji-qun-jian-kong.md)
-* [ElasticSearch问题总结](elasticsearchyuan-li-shen-ru-yan-jiu.md)
+* [ElasticSearch问题汇总](elasticsearchyuan-li-shen-ru-yan-jiu.md)
 * [ElasticSearch问题](elasticsearchyuan-li-shen-ru-yan-jiu/elasticsearchgai-nian.md)
 * [ElasticSearch学习网站](elasticsearchxue-xi-jiao-cheng.md)
 
