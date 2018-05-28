@@ -180,6 +180,8 @@ primary shard数量不可变，否则根据这个公式，之前的数据就找�
 
 22.es的增删改原理
 
+增删改只涉及到primary shard，不会由replica shard处理。
+
 >（1）客户端选择一个node发送请求过去，这个node就是coordinating node（协调节点）
 （2）coordinating node，对document进行路由，将请求转发给对应的node（有primary shard）
 （3）实际的node上的primary shard处理请求，然后将数据同步到replica node
