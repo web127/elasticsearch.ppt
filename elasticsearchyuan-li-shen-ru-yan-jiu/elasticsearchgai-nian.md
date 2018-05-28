@@ -228,9 +228,49 @@ filter，不计算相关度分数，不按照相关度分数排序，同时还�
 query，计算相关度分数，按照分数进行排序，而且无法cache结果
 因此filter性能高于query
 
-27.如何定位你的查询语法是否合法？
+27.如何定位你的查询语法是否合法的详细信息？
 
 ```
 POST /order_index/order_type/_validate/query?explain
 ```
+
 ![](/assets/54.png)
+
+28.如何解决对字符串进行排序结果不正确的问题？
+通常解决方案是，将string field建立两次索引，一个分词，用来搜索；一个不分词，用来排序
+```
+PUT /order_index_new/_mapping/order_type
+{
+  "order_type": {
+    "properties": {
+      "orderId": {
+        "type": "long"
+      },
+      "userId": {
+        "type": "long"
+      },
+      "userName": {
+        "type": "text"
+      },
+      "totalPrice": {
+        "type": "float"
+      },
+      "address": {
+        "type": "text",
+        "analyzer": "ik_smart",
+        "search_analyzer": "ik_smart",
+        "fields": {
+          "paixu": {
+            "type": "text",
+            "index": "false"
+          }
+        }
+      },
+      "createTime": {
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      }
+    }
+  }
+}
+```
