@@ -238,6 +238,8 @@ POST /order_index/order_type/_validate/query?explain
 
 28.如何解决对字符串进行排序结果不正确的问题？
 通常解决方案是，将string field建立两次索引，一个分词，用来搜索；一个不分词，用来排序
+注意：字符串排序需要设置Fielddata
+
 ```
 PUT /order_index_new/_mapping/order_type
 {
@@ -262,9 +264,10 @@ PUT /order_index_new/_mapping/order_type
         "fields": {
           "paixu": {
             "type": "text",
-            "index": "false"
+            "fielddata": true
           }
-        }
+        },
+        "fielddata": true
       },
       "createTime": {
         "type": "date",
@@ -276,4 +279,20 @@ PUT /order_index_new/_mapping/order_type
 ```
 ![](/assets/55.png)
 
-默认字符串排序需要设置
+
+
+```
+POST order_index_new/order_type/
+{
+  "query": {
+    "match_all": {}
+  },
+  "sort": [
+    {
+      "address.paixu": {
+        "order": "desc"
+      }
+    }
+  ]
+}
+```
