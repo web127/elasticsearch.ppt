@@ -170,6 +170,10 @@ POST /index/type/id/_update?retry_on_conflict=n
 2、version（指定特定的版本号）
 POST /index/type/id/_update?version=n
 
-21.
+21.document路由到shard原理
 
+路由算法：shard = hash(routing) % number_of_primary_shards
 
+routing值，默认是_id，也可以手动指定，比如：
+put /index/type/id?routing=user_id
+primary shard数量不可变，否则根据这个公式，之前的数据就找不到了
