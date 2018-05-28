@@ -187,6 +187,17 @@ primary shard数量不可变，否则根据这个公式，之前的数据就找�
 
 23.es的查询原理
 
-1、客户端发送请求到任意一个协调节点node，这个node对document进行路由，将请求转发到对应文档数据的node上（此时会使用round-robin随机轮询算法，在primary shard以及其所有replica中随机选择一个，让读请求负载均衡）
-2、接收请求的node返回document给协调节点node，协调节点node返回document给客户端
+1、客户端发送请求到任意一个协调节点node，这个node对document进行路由，将请求转发对应的node上（此时会使用round-robin随机轮询算法，在primary shard以及其所有replica中随机选择一个，让读请求负载均衡）
+2、接收请求的node最后的总结果返回document给协调节点node，协调节点node返回document给客户端
+![](/assets/51.png)
+
+
+24.timeout机制
+搜索时可指定参数timeout 单位s/秒 m/毫秒
+GET /_search?timeout=10m
+默认是无timeout，但是如果查询很慢就要等待所有结果查出来，指定timeout可在规定时间内
+返回每个shard上查到的结果然后就立即返回。
+
+
+24.分页搜索原理
 
