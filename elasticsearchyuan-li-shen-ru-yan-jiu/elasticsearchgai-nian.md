@@ -222,4 +222,8 @@ PUT index/_settings?preserve_existing=true
 
 
 
-26.
+26.filter与query对比
+一般来说，如果搜索需要匹配条件的数据先返回，么这些搜索条件要放在query中，反之，不想影响你的排序的条件放到filter
+filter，不计算相关度分数，不按照相关度分数排序，同时还内置自动cache最常使用filter的数据
+query，计算相关度分数，按照分数进行排序，而且无法cache结果
+因此filter性能高于query
