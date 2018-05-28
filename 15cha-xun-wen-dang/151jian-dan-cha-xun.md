@@ -107,4 +107,26 @@ POST _mget
   ]
 }
 ```
+
 ![](/assets/50.png)
+
+9.使用_all字段查询
+
+_all字段是把所有其它字段中的值，以空格为分隔符组成一个大字符串，_all能让你在不知道要查找的内容是属于哪个具体字段的情况下进行搜索
+query_string 和 simple_query_string 查询默认都是查询 _all 字段
+
+```
+POST /order_index/order_type/_search
+{
+  "query": {
+      "query_string": {
+      "query": "鼓楼"
+    }
+  }
+}
+```
+等同于：
+```
+GET /order_index/order_type/_search?q=鼓楼
+```
+![](/assets/53.png)
