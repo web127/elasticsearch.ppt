@@ -36,7 +36,6 @@ application.yml配置
 ```
 
 集群连接初始化配置类:
-```
 package com.zczy.cloud.config;
 /**
  * @Date：2018/4/8 9:15
@@ -46,7 +45,7 @@ package com.zczy.cloud.config;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.TransportAddress;
-import org.elasticsearch.transport.client.PreBuiltTransportClient;
+import org.elasticsearch.xpack.client.PreBuiltXPackTransportClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -68,6 +67,8 @@ public class ElasticSearchConfig {
     private String clusterNodes ;
     @Value("${spring.data.elasticsearch.cluster-name}")
     private String clusterName;
+    @Value("${spring.data.elasticsearch.x-pack}")
+    private String xPack;
     @Value("${spring.data.elasticsearch.transport}")
     private int transport;
     @Value("${spring.data.elasticsearch.search-sizes}")
@@ -77,21 +78,25 @@ public class ElasticSearchConfig {
     public TransportClient init() {
         LOGGER.info("初始化开始。。。。。");
         TransportClient transportClient = null;
-
         try {
             // 配置信息
             Settings esSetting    //增加嗅探机制，找到ES集群
                     //增加线程池个数，暂时设为5
                     ;
             esSetting = Settings.builder()
+                    //3个主分片
+                    .put("number_of_shards", 3)
+                    //副本分片
+                    .put("number_of_replicas", 2)
                     .put("client.transport.sniff", true)//增加嗅探机制，找到ES集群
                     .put("thread_pool.search.size", searchSizes)//增加线程池个数，暂时设为20
                     .put("cluster.name", clusterName)
+                    //x-pack安全插件
+                    //.put("xpack.security.transport.ssl.enabled", false)
+                    //.put("xpack.security.user", xPack)
                     .build();
             //配置信息Settings自定义,下面设置为EMPTY
-            transportClient = new PreBuiltTransportClient(esSetting).addTransportAddress(new TransportAddress(InetAddress.getByName(clusterNodes), transport));
-
-
+            transportClient = new PreBuiltXPackTransportClient(esSetting).addTransportAddress(new TransportAddress(InetAddress.getByName(clusterNodes), transport));
         } catch (Exception e) {
             LOGGER.error("elasticsearch TransportClient create error!!!", e);
         }
