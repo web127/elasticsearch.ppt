@@ -77,6 +77,27 @@ POST /order_index/order_type/_search
 }
 ```
 
+8.mget查询
+
+```
+POST _mget
+{
+  "docs": [
+    {
+      "_index": "order_index",
+      "_type": "order_type",
+      "_id": 1
+    },
+    {
+      "_index": "order_index",
+      "_type": "order_type",
+      "_id": 2
+    }
+  ]
+}
+```
+
+
 效果图：
 图1
 ![](/assets/13.png)
@@ -88,3 +109,5 @@ POST /order_index/order_type/_search
 ![](/assets/16.png)
 图5
 ![](/assets/17.png)
+图6
+![](/assets/50.png)
