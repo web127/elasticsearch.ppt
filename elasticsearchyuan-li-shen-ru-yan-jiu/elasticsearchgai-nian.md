@@ -182,7 +182,11 @@ primary shard数量不可变，否则根据这个公式，之前的数据就找�
 
 增删改只涉及到primary shard，不会由replica shard处理。
 
->（1）客户端选择一个node发送请求过去，这个node就是coordinating node（协调节点）
-（2）coordinating node，对document进行路由，将请求转发给对应的node（有primary shard）
-（3）实际的node上的primary shard处理请求，然后将数据同步到replica node
-（4）coordinating node，如果发现primary node和所有replica node都搞定之后，就返回响应结果给客户端
+>（1）客户端选择一个协调节点node发送请求过去，这个node对document进行路由，将请求转发给对应的node（有primary shard），primary shard处理请求，然后将数据同步到replica node
+（2）协调节点node如果发现primary node和所有replica node都处理完之后，返回响应结果给客户端
+
+23.es的查询原理
+
+1、客户端发送请求到任意一个协调节点node，这个node对document进行路由，将请求转发到对应文档数据的node上（此时会使用round-robin随机轮询算法，在primary shard以及其所有replica中随机选择一个，让读请求负载均衡）
+2、接收请求的node返回document给协调节点node，协调节点node返回document给客户端
+
