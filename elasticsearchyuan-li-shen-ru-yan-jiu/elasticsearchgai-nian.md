@@ -218,4 +218,4 @@ PUT index/_settings?preserve_existing=true
  }
 ```
 
-2.使用Scroll 或者Search After
+2.使用Scroll
