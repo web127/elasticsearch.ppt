@@ -16,7 +16,7 @@
 > Replica shard（副本分片）replica可以在shard故障时提供备用服务，保证数据不丢失，多个replica还可以提升搜索操作的吞吐量和性能。  
 > Mapping（映射）它定义了索引中每个字段类型，以及索引的其他设置，可事先定义，也可以根据第一次存储的文档自动识别，类似mysql里建表时对字段定义数据类型。
 
-###### 手动自定义分片：
+###### 建立索引前手动自定义分片：
 
 ```
 {
@@ -33,6 +33,19 @@
 * primary shard默认为5个，并且一旦建好不能修改，replica shard默认1个，随时修改数量
 
 * 一般使用默认的分片就可以了，就是5个primary shard，每个primary shard拥有一个replica shard。也就是说每个索引有10个分片
+
+####修改副本shard数量
+
+```
+PUT   index/_settings
+{
+  "number_of_replicas": "2",
+  "refresh_interval": "30s"
+}
+```
+
+![](/assets/41.png)
+
 
 ###### Mapping的创建:
 

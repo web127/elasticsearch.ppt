@@ -99,14 +99,14 @@
 > primary shard的默认数量是5，replica默认是1，primary shard的数量一旦创建不可更改  
 > primary shard不会和自己的replica shard放在同一个节点上
 
-14.如何提升shard性能
+14.如何分配shard
 
 > 每个node有更少的shard，IO/CPU/Memory资源给每个shard分配更多，每个shard性能更好  
 > 如3台机器：  
 > 9个shard（3 primary，6 replica）性能较差，容错好，可同时容纳2台机器宕机，此时应该增加硬件数量来提升吞吐量  
 > 6个shard（3 primary，3 replica）性能较好，容错差，可同时容纳1台机器宕机
 
-两者都可以容忍2台宕机
+上面说的是同时，两者都可以容忍2台宕机
 
 ![](/assets/36.png)
 
