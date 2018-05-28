@@ -58,7 +58,7 @@ POST /index/type/id/_update
 DELETE /index/type/id
 ```
 
-查询所有文档
+查询文档，默认返回前10条
 ```
 GET /index/type/_search
 {

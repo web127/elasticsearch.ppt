@@ -193,12 +193,29 @@ primary shard数量不可变，否则根据这个公式，之前的数据就找�
 
 
 24.timeout机制
->搜索时可指定参数timeout 单位s/秒 m/毫秒
+>搜索时可指定参数timeout 单位ms毫秒 s/秒 m/分钟
 GET /_search?timeout=10m
 默认是无timeout，但是如果查询很慢就要等待所有结果查出来，指定timeout可在规定时间内
 返回每个shard上查到的结果然后就立即返回。
 
 
 24.分页搜索原理
->搜索3000条中的第50页，那么如果有3个主shard，每个shard要将
+>如果搜索请求一个协调节点，要查询总数30000条中的第500页，查询第5000-5100数据，每个shard上数据是10000条，这时，每个shard返回5100数据，总数15300条给协调节点，然后再对这些数据进行_score排序，取_score最高的10条返回。
+因此深度分页性能问题会非常明显的暴露出来
 
+所以官方默认不让返回超过10000条以上数据，index.max_result_window参数限制
+
+![](/assets/52.png)
+
+解决：
+1.修改index.max_result_window设置值来继续使用from+size做分页查询，这样性能肯定不高。
+```
+PUT index/_settings?preserve_existing=true
+ {
+
+  "max_result_window" : "2000000000"
+
+ }
+```
+
+2.使用Scroll 或者Search After
