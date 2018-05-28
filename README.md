@@ -1,10 +1,5 @@
 ## Elasticsearch学习笔记
 
-## 在线阅读地址：[Elasticsearch学习笔记](https://legacy.gitbook.com/book/zhaheng/elasticsearch-book/details)
-
----
-
-#### [GitHub地址](http://github.com/zhaheng/elasticsearch.ppt)
 
 #### 作者：zhaheng
 
