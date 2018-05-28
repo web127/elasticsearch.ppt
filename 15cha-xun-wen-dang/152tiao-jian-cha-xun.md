@@ -14,7 +14,7 @@ prefix 
 Phrase Matching
 
 #### match_all 查询
->可以查询到所有文档，是没有查询条件下的默认语句。
+>对所有文档查询，默认查询前10条数据，按_score降序排序
 
 ```
 POST /order_index/order_type/_search
