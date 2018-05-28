@@ -23,8 +23,10 @@ lucene-core-7.2.1.jar
 x-pack-core-6.2.2.jar
 elasticsearch-core-6.2.2.jar
 
+```
 javac -cp "elasticsearch-6.2.2.jar;lucene-core-7.2.1.jar;x-pack-core-6.2.2.jar" LicenseVerifier.java
 javac -cp "elasticsearch-6.2.2.jar;lucene-core-7.2.1.jar:x-pack-core-6.2.2.jar;elasticsearch-core-6.2.2.jar" XPackBuild.java
+```
 
 替换破解的jar包到x-pack-6.2.2.zip
 
