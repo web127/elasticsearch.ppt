@@ -78,4 +78,20 @@ xpack.security.enabled:false
 ![](/assets/48.png)
 ![](/assets/49.png)
 
+2).在config目录下创建certs目录，将生成的p12文件拷贝进去
 
+3).在config目录下创建certs目录，将生成的p12文件拷贝进去
+在elasticsearch.yml配置文件中添加如下几行：
+
+```
+xpack.security.transport.ssl.enabled: true
+xpack.security.transport.ssl.verification_mode: certificate 
+xpack.security.transport.ssl.keystore.path: certs/elastic-certificates.p12 
+xpack.security.transport.ssl.truststore.path: certs/elastic-certificates.p12
+```
+4)使用密码保护节点的证书，请将您的密码添加到elasticsearch秘钥库：
+
+```
+bin/elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
+bin/elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
+```
