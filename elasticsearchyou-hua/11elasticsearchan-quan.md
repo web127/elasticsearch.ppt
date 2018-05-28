@@ -96,3 +96,16 @@ bin/elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_pass
 bin/elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
 ```
 
+5).elasticsearch.yml更改配置，重启集群
+```
+xpack.security.enabled: true
+action.auto_create_index: true
+```
+重启ES集群
+
+6).执行/bin/x-pack/setup-passwords interactive 此只需要在一个节点上执行
+
+7).拷贝生成的证书到其他节点（不能在其他节点直接生成）
+
+
+此时已经完成了
