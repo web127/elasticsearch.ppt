@@ -95,3 +95,4 @@ xpack.security.transport.ssl.truststore.path: certs/elastic-certificates.p12
 bin/elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
 bin/elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
 ```
+
