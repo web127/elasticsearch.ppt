@@ -30,11 +30,13 @@ javac -cp "elasticsearch-6.2.2.jar;lucene-core-7.2.1.jar:x-pack-core-6.2.2.jar;e
 
 2.离线安装x-pack-6.2.2.zip
 
-停止所有ES集群节点，安装x-pack插件
+停止所有ES集群节点，安装x-pack插件，安装完后会在config下生成elasticsearch.keystore
 
 ```
 ./elasticsearch-plugin  install file:///usr/local/x-pack-6.2.2.zip
 ```
+![](/assets/47.png)
+
 3.更改license
 官网申请免费[license](https://license.elastic.co/registration)，会发邮件给你进行下载
 下载的文件重命名为license.json，并做如下修改：
@@ -57,5 +59,23 @@ xpack.security.enabled:false
 ![](/assets/43.png)
 ![](/assets/44.png)
 ![](/assets/45.png)
+查看license：
+![](/assets/46.png)
+
+6.因为我们导入的不是试用版的license 所以如果我们要开启安全验证 必须要配置集群内部通讯的TLS/SSL
+
+##### 步骤如下：
+
+1）输入一个自定义的密码， 或者您可以按enter键将密码留空。生成身份文件
+
+```
+/usr/local/elasticsearch-6.2.2/bin/x-pack/certutil ca
+```
+```
+/usr/local/elk/elasticsearch-6.2.3/bin/x-pack/certutil cert --ca elastic-stack-ca.p12
+```
+
+![](/assets/48.png)
+![](/assets/49.png)
 
 
