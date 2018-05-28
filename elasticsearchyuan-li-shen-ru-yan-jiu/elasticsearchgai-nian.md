@@ -135,8 +135,40 @@
 > es使用_version乐观锁来达到这个目的， 请求时带版本号参数，如果该版本不是当前版本号，请求将会失败
 每次对这个document执行修改或者删除操作，都会对这个_version版本号自动加1
 
-20.部分更新的原理
+20.部分更新和全量更新的原理
 
+PUT /index/type/id 创建文档&替换文档，就是一样的语法
+一般对应到应用程序中，每次的执行流程基本是这样的：
+1、应用程序发起一个get请求，获取到document，展示到前台界面，供用户查看和修改
+2、用户在前台界面修改数据，发送到后台
+3、后台代码会将用户修改的数据在内存中进行执行，然后封装好修改后的全量数据
+4、然后发送PUT请求到es中，进行全量替换
+5、es将老的document标记为delete，然后重新创建一个新的document
+
+什么是partial update？
+POST /index/type/id/_update
+{
+　　"doc" : {
+　　　　"要修改的少数几个field"
+　　}
+}
+看起来好像比较方便，每次就传递几个发生修改的field即可，不需要将全量的document数据发送过去。
+实现原理：
+其实es内部对partial update的实际操作，更传统的全量替换方式，几乎是一样的
+1、内部先获取document
+2、将传过来的field更新到document的json中
+3、将老的document标记为deleted
+4、将修改后的新的document创建出来
+
+partial update相较于全量替换的优点：
+1、全量替换需要将数据从es中通过java应用程序传输到用户界面，然后用户在前台界面修改后，再通过java应用程序写入到es中去，而partial update的所有查询、修改和写回操作，都发生在es中的一个shard内部，避免了所有网络数据传输的开销（减少了两次网络请求），大大提升了性能
+2、全量替换，查询结果放在界面，用户修改就有可能经历10分钟或者更长时间，然后修改完以后再写回去，可能es中的数据早已经被别人修改了，所以并发冲突的情况就会发生的较多。而partial update的查询、修改和写回都发生在es中一个shard内部，一瞬间就完成修改，可能耗时就是毫秒级别的，所以可以大大减少并发冲突的情况。
+
+partial update 涉及到的两个知识点：
+1、retry_on_conflict = n（如果第一次更新失败，接下来会重新获取新的version版本号，继续尝试更新。这个过程会持续N次）
+POST /index/type/id/_update?retry_on_conflict=n
+2、version（指定特定的版本号）
+POST /index/type/id/_update?version=n
 
 
 
