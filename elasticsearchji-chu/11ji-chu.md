@@ -7,12 +7,13 @@
 本书完成章节
 
 - [ ] ElasticSearch基础
-- [x] ElasticSearch基础查询
+- [ ] ElasticSearch插件
+- [x] ElasticSearch查询
 - [x] ElasticSearch高级查询
-- [x] SpringBoot整合ElasticSearch
+- [x] SpringBoot整合ES
 - [ ] ElasticSearch的优化
-- [ ] ElasticSearch原理深入
-
+- [ ] ElasticSearch问题汇总
+- [ ] ElasticSearch学习网站
 
 
 
