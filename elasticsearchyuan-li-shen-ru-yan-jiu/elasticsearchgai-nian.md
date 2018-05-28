@@ -219,9 +219,17 @@ PUT index/_settings?preserve_existing=true
 ```
 
 2.使用Scroll
-
-
-
+如果深度查询性能会很差，一般会采取使用scroll滚动搜索，可以先搜索一批数据，然后下次再搜索一批数据
+指定一个scoll参数，指定搜索在时间窗口内能完成,指的size返回条数大小
+{
+  "query": {
+    "match_all": {}
+  },
+  "sort": [ "_doc" ],
+  "size": 3
+}
+![](/assets/57.png)
+会有一个scoll_id，下一次再发送scoll请求的时候，必须带上这个scoll_id
 26.filter与query对比
 >一般来说，如果搜索需要匹配条件的数据先返回，么这些搜索条件要放在query中，反之，不想影响你的排序的条件放到filter
 filter，不计算相关度分数，不按照相关度分数排序，同时还内置自动cache最常使用filter的数据
@@ -304,4 +312,6 @@ POST order_index_new/order_type/
 >在建立索引的时候，一方面建立倒排索引，供搜索用；一方面建立正排索引，就是doc values，供排序，聚合，过滤等操作
 
 >doc values，如果内存足够，os会自动将其缓存在内存中，性能会很高；如果内存不够，os会将其写入磁盘上
+
+30.query phase和fetch phase原理
 
