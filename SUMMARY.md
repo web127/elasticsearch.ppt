@@ -33,6 +33,6 @@
   * [ElasticSearch集群监控](elasticsearchyou-hua/elasticsearchji-qun-jian-kong.md)
   * [ElasticSearch零停机重建索引](elasticsearchyou-hua/elasticsearchling-ting-ji-zhong-jian-suo-yin.md)
 * [ElasticSearch问题汇总](elasticsearchyuan-li-shen-ru-yan-jiu.md)
-  * [ElasticSearch问题](elasticsearchyuan-li-shen-ru-yan-jiu/elasticsearchgai-nian.md)
+  * [ElasticSearch常见问题](elasticsearchyuan-li-shen-ru-yan-jiu/elasticsearchgai-nian.md)
 * [ElasticSearch学习网站](elasticsearchxue-xi-jiao-cheng.md)
 
