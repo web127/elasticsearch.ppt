@@ -220,7 +220,7 @@ PUT index/_settings?preserve_existing=true
 
 2.使用Scroll
 如果深度查询性能会很差，一般会采取使用scroll滚动搜索，可以先搜索一批数据，然后下次再搜索一批数据
-指定一个scoll参数，指定搜索在时间窗口内能完成,指的size返回条数大小
+指定一个scoll参数，指定当前scroll的打开时间（只有当前scroll为打开状态，才能获取到值）,size返回条数大小
 {
   "query": {
     "match_all": {}
