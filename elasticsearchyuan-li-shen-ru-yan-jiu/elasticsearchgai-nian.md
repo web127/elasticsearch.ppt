@@ -145,7 +145,7 @@
 4、然后发送PUT请求到es中，进行全量替换
 5、es将老的document标记为delete，然后重新创建一个新的document
 
-```
+>```
 POST /index/type/id/_update
 {
 　　"doc" : {
@@ -204,12 +204,13 @@ GET /_search?timeout=10m
 >如果搜索请求一个协调节点，要查询总数30000条中的第500页，查询第5000-5100数据，每个shard上数据是10000条，这时，每个shard返回5100数据，总数15300条给协调节点，然后再对这些数据进行_score排序，取_score最高的10条返回。
 因此深度分页性能问题会非常明显的暴露出来
 
-所以官方默认不让返回超过10000条以上数据，index.max_result_window参数限制
+>官方默认不让返回超过10000条以上数据，index.max_result_window参数限制
 
-![](/assets/52.png)
+>![](/assets/52.png)
 
 解决：
 1.修改index.max_result_window设置值来继续使用from+size做分页查询，这样性能肯定不高。
+
 ```
 PUT index/_settings?preserve_existing=true
  {
