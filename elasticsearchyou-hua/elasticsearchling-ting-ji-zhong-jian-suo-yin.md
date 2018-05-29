@@ -90,6 +90,6 @@ POST /_aliases
 这样就完成了
 
 
-java api操作
+java api操作：
 
 
