@@ -74,7 +74,8 @@ POST /order_index/order_type/_search?scroll=1m
 4.使用bulk将查询出来的数据批量导入新索引
 ```
 POST /_bulk
-
+{ "index":  { "_index": "order_index_new", "_type": "order_type", "_id": "2" }}
+{ .... }
 ```
 
 5.将bm_order_index 的alias切换到order_index_new上去
@@ -86,3 +87,4 @@ POST /_aliases
     ]
 }
 
+这样就完成了
