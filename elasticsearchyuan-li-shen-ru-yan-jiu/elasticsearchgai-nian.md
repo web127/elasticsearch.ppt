@@ -135,7 +135,7 @@
 > es使用_version乐观锁来达到这个目的， 请求时带版本号参数，如果该版本不是当前版本号，请求将会失败
 每次对这个document执行修改或者删除操作，都会对这个_version版本号自动加1
 
-#### 20.部分更新和全量更新的原理
+#### 20.部分更新（partial update）和全量更新的原理
 
 >PUT /index/type/id 创建文档&替换文档，就是一样的语法
 一般对应到应用程序中，每次的执行流程基本是这样的：
@@ -145,14 +145,15 @@
 4、然后发送PUT请求到es中，进行全量替换
 5、es将老的document标记为delete，然后重新创建一个新的document
 
->什么是partial update？
+```
 POST /index/type/id/_update
 {
 　　"doc" : {
 　　　　"要修改的少数几个field"
 　　}
 }
-看起来好像比较方便，每次就传递几个发生修改的field即可，不需要将全量的document数据发送过去。
+```
+>每次就传递几个发生修改的field即可，不需要将全量的document数据发送过去。
 实现原理：
 其实es内部对partial update的实际操作，更传统的全量替换方式，几乎是一样的
 1、内部先获取document
