@@ -54,3 +54,23 @@ POST /order_index/order_type/_search?scroll=1m
 
 4.使用bulk将查询出来的数据批量导入新索引
 
+
+
+java api里面操作方式:
+
+（1）添加别名
+```
+client.admin().indices().prepareAliases().addAlias("my_index_v1","my_index");
+```
+（2）移除别名
+```  client.admin().indices().prepareAliases().removeAlias("my_index_v1","my_index");
+```
+（3）删除一个别名后再添加一个
+```
+client.admin().indices().prepareAliases().removeAlias("my_index_v1","my_index").addAlias("my_index_v2","my_index").execute().actionGet();
+```
+
+当别名添加完毕后，我们在删除，搜索，更新都可以直接使用：
+
+ SearchRequestBuilder search=client.prepareSearch("my_index");
+需要注意使用别名后，type类型的值不需要在填写，如果你填写了es是会抛异常的，因为它认为你这别名是一个新的索引，所以我们只写index name即可，es服务端知道它的类型。
