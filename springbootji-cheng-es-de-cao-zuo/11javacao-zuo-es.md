@@ -36,6 +36,8 @@ application.yml配置
 ```
 
 集群连接初始化配置类:
+
+```
 package com.zczy.cloud.config;
 /**
  * @Date：2018/4/8 9:15
@@ -109,50 +111,8 @@ public class ElasticSearchConfig {
 
 javaClient操作ES的增刪改查:
 
+
 ```
-package com.zczy.cloud.common;
-/**
- * @Date：2018/4/9 11:24
- */
-
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.zczy.cloud.base.QueryEntity;
-import org.apache.commons.lang3.StringUtils;
-import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
-import org.elasticsearch.action.admin.indices.delete.DeleteIndexResponse;
-import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsRequest;
-import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsResponse;
-import org.elasticsearch.action.delete.DeleteResponse;
-import org.elasticsearch.action.get.GetRequestBuilder;
-import org.elasticsearch.action.get.GetResponse;
-import org.elasticsearch.action.index.IndexResponse;
-import org.elasticsearch.action.search.SearchRequestBuilder;
-import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.action.search.SearchType;
-import org.elasticsearch.action.update.UpdateRequest;
-import org.elasticsearch.action.update.UpdateResponse;
-import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.text.Text;
-import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.rest.RestStatus;
-import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
-import org.elasticsearch.search.sort.SortOrder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
-import java.util.*;
-
-/**
- * @Author: 查恒
- * @Date: 2018/4/9 11:24
- * @Description:
- */
 @Component
 public class ElasticsearchUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(ElasticsearchUtils.class);
