@@ -82,8 +82,7 @@ public class ElasticSearchConfig {
         TransportClient transportClient = null;
         try {
             // 配置信息
-        esSetting = Settings.builder()
-                  
+        esSetting = Settings.builder()   
                     .put("client.transport.sniff", true)//增加嗅探机制，找到ES集群
                     .put("thread_pool.search.size", searchSizes)//增加线程池个数，暂时设为20
                     .put("cluster.name", clusterName)
