@@ -111,3 +111,60 @@ action.auto_create_index: true
 
 
 此时已经完成了
+
+
+
+如果想在集群之间使用TSL/SSL，继续：
+8).集群上设置TSL/SSL：
+vim instances.yml
+这个相当于白名单一样的东西，配置了ip的服务器节点可以访问集群
+```
+instances:
+   - name: "node1"
+     ip:
+       - "172.16.16.179"
+   - name: "node2"
+     ip:
+       - "172.16.16.179"
+   - name: "node3"
+     ip:
+       - "172.16.16.178"
+```
+9).生成证书
+./x-pack/certgen -in instances.yml
+
+![](/assets/65.png)
+
+10).添加如下配置：
+
+```
+xpack.security.enabled: truexpack.ssl.key: /home/zhaheng/elasticsearch1/config/certs/node1/node1.keyxpack.ssl.certificate: /home/zhaheng/elasticsearch1/config/certs/node1/node1.crtxpack.ssl.certificate_authorities: /home/zhaheng/elasticsearch1/config/certs/ca/ca.crt
+```
+
+
+xpack.security.enabled: true
+xpack.ssl.key: /home/zhaheng/elasticsearch2/config/certs/node2/node2.key
+xpack.ssl.certificate: /home/zhaheng/elasticsearch2/config/certs/node2/node2.crt
+xpack.ssl.certificate_authorities: /home/zhaheng/elasticsearch2/config/certs/ca/ca.crt
+```
+
+
+```
+xpack.security.enabled: true
+xpack.ssl.key: /home/zhaheng/elasticsearch3/config/certs/node3/node3.key
+xpack.ssl.certificate: /home/zhaheng/elasticsearch3/config/certs/node3/node3.crt
+xpack.ssl.certificate_authorities: /home/zhaheng/elasticsearch3/config/certs/ca/ca.crt
+```
+
+
+重新启动Elasticsearch
+
+./elasticsearch1/bin/elasticsearch -d
+./elasticsearch2/bin/elasticsearch -d
+./elasticsearch3/bin/elasticsearch -d
+
+11).如果没用初始化密码，初始化es默认账号的密码：
+
+```
+bin/x-pack/setup-passwords interactive
+```
