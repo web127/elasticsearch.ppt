@@ -168,3 +168,20 @@ xpack.ssl.certificate_authorities: /home/zhaheng/elasticsearch3/config/certs/ca/
 ```
 bin/x-pack/setup-passwords interactive
 ```
+
+
+12.成功后，java客户端连接
+
+节点为客户端IP的节点
+```
+      esSetting = Settings.builder()
+                    .put("client.transport.sniff", true)//增加嗅探机制，找到ES集群
+                    .put("thread_pool.search.size", searchSizes)//增加线程池个数，暂时设为20
+                    .put("cluster.name", clusterName)
+                    .put("xpack.security.user", xPack)
+                    .put("xpack.ssl.key", ResourceUtils.getFile("classpath:static/node1/node1.key").getPath())
+                    .put("xpack.ssl.certificate", ResourceUtils.getFile("classpath:static/node1/node1.crt").getPath())
+                    .put("xpack.ssl.certificate_authorities", ResourceUtils.getFile("classpath:static/ca/ca.crt").getPath())
+                    .put("xpack.security.transport.ssl.enabled", true)
+                    .build();
+```
