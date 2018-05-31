@@ -141,7 +141,7 @@ instances:
 xpack.security.enabled: truexpack.ssl.key: /home/zhaheng/elasticsearch1/config/certs/node1/node1.keyxpack.ssl.certificate: /home/zhaheng/elasticsearch1/config/certs/node1/node1.crtxpack.ssl.certificate_authorities: /home/zhaheng/elasticsearch1/config/certs/ca/ca.crt
 ```
 
-
+```
 xpack.security.enabled: true
 xpack.ssl.key: /home/zhaheng/elasticsearch2/config/certs/node2/node2.key
 xpack.ssl.certificate: /home/zhaheng/elasticsearch2/config/certs/node2/node2.crt
