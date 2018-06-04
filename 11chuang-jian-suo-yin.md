@@ -75,6 +75,7 @@ PUT /order_index/_mapping/order_type/
 
 
 ####增加字段
+
 ```
 PUT /order_index/_mapping/order_type/
 {
@@ -87,6 +88,7 @@ PUT /order_index/_mapping/order_type/
   }
 }
 ```
+
 keyword字段添加后在head的插件的mapping看不见，使用查询
 
 ```
