@@ -91,12 +91,9 @@ keyword字段添加后在head的插件的mapping看不见，使用查询
 
 ```
 GET /order_index/order_type/_mapping
-
-
-
-
 ```
 
+即可查询到是否成功添加了字段。
 
 
 1.建立order_index索引  
