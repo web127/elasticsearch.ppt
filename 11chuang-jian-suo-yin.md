@@ -76,6 +76,8 @@ PUT /order_index/_mapping/order_type/
 
 ####增加字段
 
+新增字段haveShortBargeBBB
+
 ```
 PUT /order_index/_mapping/order_type/
 {
