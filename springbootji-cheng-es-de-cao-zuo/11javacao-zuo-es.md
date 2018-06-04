@@ -47,7 +47,7 @@ package com.zczy.cloud.config;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.TransportAddress;
-import org.elasticsearch.xpack.client.PreBuiltXPackTransportClient;
+import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -82,15 +82,25 @@ public class ElasticSearchConfig {
         TransportClient transportClient = null;
         try {
             // 配置信息
-        esSetting = Settings.builder()   
+            Settings esSetting;    //增加嗅探机制，找到ES集群
+                    //增加线程池个数，暂时设为5
+
+            esSetting = Settings.builder()
                     .put("client.transport.sniff", true)//增加嗅探机制，找到ES集群
                     .put("thread_pool.search.size", searchSizes)//增加线程池个数，暂时设为20
                     .put("cluster.name", clusterName)
-                    //.put("xpack.security.transport.ssl.enabled", false)
                     //.put("xpack.security.user", xPack)
+                    //.put("xpack.security.transport.ssl.verification_mode", "certificate")
+                    //.put("xpack.security.transport.ssl.keystore.path", ResourceUtils.getFile("classpath:static/elastic-certificates.p12").getPath())
+                    //.put("xpack.security.transport.ssl.truststore.path", ResourceUtils.getFile("classpath:static/elastic-certificates.p12").getPath())
+                    //.put("xpack.ssl.key", ResourceUtils.getFile("classpath:static/node5/node5.key").getPath())
+                    //.put("xpack.ssl.certificate", ResourceUtils.getFile("classpath:static/node5/node5.crt").getPath())
+                    //.put("xpack.ssl.certificate_authorities", ResourceUtils.getFile("classpath:static/ca/ca.crt").getPath())
+                    //.put("xpack.security.transport.ssl.enabled", true)
                     .build();
             //配置信息Settings自定义,下面设置为EMPTY
-            transportClient = new PreBuiltXPackTransportClient(esSetting).addTransportAddress(new TransportAddress(InetAddress.getByName(clusterNodes), transport));
+            //transportClient = new PreBuiltXPackTransportClient(esSetting).addTransportAddress(new TransportAddress(InetAddress.getByName(clusterNodes), transport));
+            transportClient = new PreBuiltTransportClient(esSetting).addTransportAddress(new TransportAddress(InetAddress.getByName(clusterNodes), transport));
         } catch (Exception e) {
             LOGGER.error("elasticsearch TransportClient create error!!!", e);
         }
@@ -98,6 +108,7 @@ public class ElasticSearchConfig {
         return transportClient;
     }
 }
+
 
 ```
 
