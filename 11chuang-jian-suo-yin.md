@@ -73,6 +73,32 @@ PUT /order_index/_mapping/order_type/
 ![](/assets/7.png)
 ![](/assets/8.png)
 
+
+####增加字段
+```
+PUT /order_index/_mapping/order_type/
+{
+  "order_type": {
+    "properties": {
+      "haveShortBargeBBB": {
+        "type": "keyword"
+      }
+    }
+  }
+}
+```
+keyword字段添加后在head的插件的mapping看不见，使用查询
+
+```
+GET /order_index/order_type/_mapping
+
+
+
+
+```
+
+
+
 1.建立order_index索引  
 2.在order_index下建立order_type类型  
 3.每个订单数据是一个文档
